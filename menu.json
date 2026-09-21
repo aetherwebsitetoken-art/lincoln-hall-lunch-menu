@@ -1,17 +1,9 @@
 {
-  "generated_at": "2026-09-21T00:29:41.446829+00:00",
+  "generated_at": "2026-09-21T00:39:27.056506+00:00",
   "schools": {
     "Lincoln Hall": {
       "2026-09-14": {
         "Lunch": [
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
-            "name": "Spanish Rice",
-            "type": "Grain"
-          },
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -25,6 +17,14 @@
             "type": "Entr\u00e9e"
           },
           {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
+          },
+          {
+            "name": "Spanish Rice",
+            "type": "Grain"
+          },
+          {
             "name": "Cinnamon Churro",
             "type": "Dessert"
           }
@@ -32,14 +32,6 @@
       },
       "2026-09-15": {
         "Lunch": [
-          {
-            "name": "Mexican Street Corn",
-            "type": "Vegetable"
-          },
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -51,19 +43,19 @@
           {
             "name": "Chef Salad W/Chicken (H) Option",
             "type": "Entr\u00e9e"
-          }
-        ]
-      },
-      "2026-09-16": {
-        "Lunch": [
+          },
           {
-            "name": "Tator Tots",
+            "name": "Mexican Street Corn",
             "type": "Vegetable"
           },
           {
             "name": "Seasonal Fruit",
             "type": "Fruit"
-          },
+          }
+        ]
+      },
+      "2026-09-16": {
+        "Lunch": [
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -75,19 +67,19 @@
           {
             "name": "Chef Salad W/Chicken (H) Option",
             "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Tator Tots",
+            "type": "Vegetable"
+          },
+          {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           }
         ]
       },
       "2026-09-17": {
         "Lunch": [
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
-            "name": "Homemade Greek Garbanzo Bean Salad",
-            "type": "Grain"
-          },
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -99,6 +91,14 @@
           {
             "name": "Chicken Gyros on Pita (H) Tzatziki",
             "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
+          },
+          {
+            "name": "Homemade Greek Garbanzo Bean Salad",
+            "type": "Grain"
           }
         ]
       },
@@ -117,6 +117,18 @@
       "2026-09-21": {
         "Lunch": [
           {
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Pete's Ground Beef(H)Homemade Chili",
+            "type": "Entr\u00e9e"
+          },
+          {
             "name": "Seasonal Fruit",
             "type": "Fruit"
           },
@@ -129,6 +141,14 @@
             "type": "Grain"
           },
           {
+            "name": "Homemade Rice Pudding",
+            "type": "Dessert"
+          }
+        ]
+      },
+      "2026-09-22": {
+        "Lunch": [
+          {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
           },
@@ -137,17 +157,9 @@
             "type": "Entr\u00e9e"
           },
           {
-            "name": "Homemade Rice Pudding",
-            "type": "Dessert"
-          },
-          {
-            "name": "Pete's Ground Beef(H)Homemade Chili",
+            "name": "Mandarin Orange Chicken",
             "type": "Entr\u00e9e"
-          }
-        ]
-      },
-      "2026-09-22": {
-        "Lunch": [
+          },
           {
             "name": "Seasonal Fruit",
             "type": "Fruit"
@@ -157,37 +169,13 @@
             "type": "Grain"
           },
           {
-            "name": "Bagel Option (K)(H)",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Chef Salad W/Chicken (H) Option",
-            "type": "Entr\u00e9e"
-          },
-          {
             "name": "Fortune Cookie",
             "type": "Dessert"
-          },
-          {
-            "name": "Mandarin Orange Chicken",
-            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-09-23": {
         "Lunch": [
-          {
-            "name": "Mediterranean Roasted Broccoli",
-            "type": "Vegetable"
-          },
-          {
-            "name": "Fresh Mixed Fruit",
-            "type": "Fruit"
-          },
-          {
-            "name": "Garlic Bread W/ EVOO",
-            "type": "Grain"
-          },
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -199,19 +187,23 @@
           {
             "name": "Pesto Penne Pasta Rigate (V)",
             "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Mediterranean Roasted Broccoli",
+            "type": "Vegetable"
+          },
+          {
+            "name": "Fresh Mixed Fruit",
+            "type": "Fruit"
+          },
+          {
+            "name": "Garlic Bread W/ EVOO",
+            "type": "Grain"
           }
         ]
       },
       "2026-09-24": {
         "Lunch": [
-          {
-            "name": "Cajun Seasoned French Fries",
-            "type": "Vegetable"
-          },
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -223,23 +215,19 @@
           {
             "name": "Roasted Turkey Wrap",
             "type": "Entr\u00e9e"
-          }
-        ]
-      },
-      "2026-09-25": {
-        "Lunch": [
+          },
           {
-            "name": "Carrot/Celery Sticks",
+            "name": "Cajun Seasoned French Fries",
             "type": "Vegetable"
           },
           {
             "name": "Seasonal Fruit",
             "type": "Fruit"
-          },
-          {
-            "name": "Garlic Bread W/ EVOO",
-            "type": "Grain"
-          },
+          }
+        ]
+      },
+      "2026-09-25": {
+        "Lunch": [
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -251,191 +239,7 @@
           {
             "name": "Homemade No Meat Lasagna",
             "type": "Entr\u00e9e"
-          }
-        ]
-      },
-      "2026-09-28": {
-        "Lunch": [
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
           },
-          {
-            "name": "Spanish Rice",
-            "type": "Grain"
-          },
-          {
-            "name": "Bagel Option (K)(H)",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Beef (H) Taco Salad",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Chef Salad W/Chicken (H) Option",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Cinnamon Churro",
-            "type": "Dessert"
-          }
-        ]
-      },
-      "2026-09-29": {
-        "Lunch": [
-          {
-            "name": "Home Made Mash Potatoes",
-            "type": "Vegetable"
-          },
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
-            "name": "Bagel Option (K)(H)",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Chef Salad W/Chicken (H) Option",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Chicken & Biscuit Sandwich",
-            "type": "Entr\u00e9e"
-          }
-        ]
-      },
-      "2026-09-30": {
-        "Lunch": [
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
-            "name": "Crackers",
-            "type": "Grain"
-          },
-          {
-            "name": "Super Pretzel Whole Grain Soft Pretzels",
-            "type": "Grain"
-          },
-          {
-            "name": "Bagel Option (K)(H)",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Broccoli Cheese Soup",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Chef Salad W/Chicken (H) Option",
-            "type": "Entr\u00e9e"
-          }
-        ]
-      },
-      "2026-10-01": {
-        "Lunch": [
-          {
-            "name": "Cajun Seasoned French Fries",
-            "type": "Vegetable"
-          },
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
-            "name": "Bagel Option (K)(H)",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Chef Salad W/Chicken (H) Option",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Grilled Cheese (V)",
-            "type": "Entr\u00e9e"
-          }
-        ]
-      },
-      "2026-10-02": {
-        "Lunch": [
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
-            "name": "Greek Broccoli Pasta Salad",
-            "type": "Grain"
-          },
-          {
-            "name": "Bagel Option (K)(H)",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Chef Salad W/Chicken (H) Option",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Lincolnwood Cheese \"Pete\"zza(V)",
-            "type": "Entr\u00e9e"
-          }
-        ]
-      },
-      "2026-10-05": {
-        "Lunch": [
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
-            "name": "Spanish Rice",
-            "type": "Grain"
-          },
-          {
-            "name": "Bagel Option (K)(H)",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Beef (H) Taco Salad",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Chef Salad W/Chicken (H) Option",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Cinnamon Churro",
-            "type": "Dessert"
-          }
-        ]
-      },
-      "2026-10-06": {
-        "Lunch": [
-          {
-            "name": "Honey Butter Carrots",
-            "type": "Vegetable"
-          },
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
-            "name": "Bagel Option (K)(H)",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Chef Salad W/Chicken (H) Option",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Macaroni & Cheese(V)",
-            "type": "Entr\u00e9e"
-          }
-        ]
-      },
-      "2026-10-07": {
-        "Lunch": [
           {
             "name": "Carrot/Celery Sticks",
             "type": "Vegetable"
@@ -447,7 +251,191 @@
           {
             "name": "Garlic Bread W/ EVOO",
             "type": "Grain"
+          }
+        ]
+      },
+      "2026-09-28": {
+        "Lunch": [
+          {
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
+          {
+            "name": "Beef (H) Taco Salad",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
+          },
+          {
+            "name": "Spanish Rice",
+            "type": "Grain"
+          },
+          {
+            "name": "Cinnamon Churro",
+            "type": "Dessert"
+          }
+        ]
+      },
+      "2026-09-29": {
+        "Lunch": [
+          {
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Chicken & Biscuit Sandwich",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Home Made Mash Potatoes",
+            "type": "Vegetable"
+          },
+          {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
+          }
+        ]
+      },
+      "2026-09-30": {
+        "Lunch": [
+          {
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Broccoli Cheese Soup",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
+          },
+          {
+            "name": "Crackers",
+            "type": "Grain"
+          },
+          {
+            "name": "Super Pretzel Whole Grain Soft Pretzels",
+            "type": "Grain"
+          }
+        ]
+      },
+      "2026-10-01": {
+        "Lunch": [
+          {
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Grilled Cheese (V)",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Cajun Seasoned French Fries",
+            "type": "Vegetable"
+          },
+          {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
+          }
+        ]
+      },
+      "2026-10-02": {
+        "Lunch": [
+          {
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Lincolnwood Cheese \"Pete\"zza(V)",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
+          },
+          {
+            "name": "Greek Broccoli Pasta Salad",
+            "type": "Grain"
+          }
+        ]
+      },
+      "2026-10-05": {
+        "Lunch": [
+          {
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Beef (H) Taco Salad",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
+          },
+          {
+            "name": "Spanish Rice",
+            "type": "Grain"
+          },
+          {
+            "name": "Cinnamon Churro",
+            "type": "Dessert"
+          }
+        ]
+      },
+      "2026-10-06": {
+        "Lunch": [
+          {
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Macaroni & Cheese(V)",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Honey Butter Carrots",
+            "type": "Vegetable"
+          },
+          {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
+          }
+        ]
+      },
+      "2026-10-07": {
+        "Lunch": [
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -459,19 +447,23 @@
           {
             "name": "Penne w/ Marina Sauce (V)(H)",
             "type": "Entr\u00e9e"
-          }
-        ]
-      },
-      "2026-10-08": {
-        "Lunch": [
+          },
           {
-            "name": "Homemade Cole Slaw",
+            "name": "Carrot/Celery Sticks",
             "type": "Vegetable"
           },
           {
             "name": "Seasonal Fruit",
             "type": "Fruit"
           },
+          {
+            "name": "Garlic Bread W/ EVOO",
+            "type": "Grain"
+          }
+        ]
+      },
+      "2026-10-08": {
+        "Lunch": [
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -483,19 +475,19 @@
           {
             "name": "Chicken Breaded Tender Wrap (H)",
             "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Homemade Cole Slaw",
+            "type": "Vegetable"
+          },
+          {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           }
         ]
       },
       "2026-10-09": {
         "Lunch": [
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
-            "name": "Greek Broccoli Pasta Salad",
-            "type": "Grain"
-          },
           {
             "name": "Bagel Cheese Pete's zza",
             "type": "Entr\u00e9e"
@@ -507,6 +499,14 @@
           {
             "name": "Chef Salad W/Chicken (H) Option",
             "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
+          },
+          {
+            "name": "Greek Broccoli Pasta Salad",
+            "type": "Grain"
           }
         ]
       },
@@ -529,14 +529,6 @@
       "2026-10-14": {
         "Lunch": [
           {
-            "name": "Tator Tots",
-            "type": "Vegetable"
-          },
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
           },
@@ -547,19 +539,19 @@
           {
             "name": "Chef Salad W/Chicken (H) Option",
             "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Tator Tots",
+            "type": "Vegetable"
+          },
+          {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           }
         ]
       },
       "2026-10-15": {
         "Lunch": [
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
-            "name": "Spanish Rice",
-            "type": "Grain"
-          },
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -571,23 +563,19 @@
           {
             "name": "Chicken Fajitas w/Tortilla",
             "type": "Entr\u00e9e"
-          }
-        ]
-      },
-      "2026-10-16": {
-        "Lunch": [
-          {
-            "name": "Honey Butter Carrots",
-            "type": "Vegetable"
           },
           {
             "name": "Seasonal Fruit",
             "type": "Fruit"
           },
           {
-            "name": "Garlic Bread W/ EVOO",
+            "name": "Spanish Rice",
             "type": "Grain"
-          },
+          }
+        ]
+      },
+      "2026-10-16": {
+        "Lunch": [
           {
             "name": "Alfredo Penne Rigatoni  (V)",
             "type": "Entr\u00e9e"
@@ -599,19 +587,23 @@
           {
             "name": "Chef Salad W/Chicken (H) Option",
             "type": "Entr\u00e9e"
-          }
-        ]
-      },
-      "2026-10-19": {
-        "Lunch": [
+          },
+          {
+            "name": "Honey Butter Carrots",
+            "type": "Vegetable"
+          },
           {
             "name": "Seasonal Fruit",
             "type": "Fruit"
           },
           {
-            "name": "Spanish Rice",
+            "name": "Garlic Bread W/ EVOO",
             "type": "Grain"
-          },
+          }
+        ]
+      },
+      "2026-10-19": {
+        "Lunch": [
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -625,6 +617,14 @@
             "type": "Entr\u00e9e"
           },
           {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
+          },
+          {
+            "name": "Spanish Rice",
+            "type": "Grain"
+          },
+          {
             "name": "Cinnamon Churro",
             "type": "Dessert"
           }
@@ -632,18 +632,6 @@
       },
       "2026-10-20": {
         "Lunch": [
-          {
-            "name": "Carrot/Celery Sticks",
-            "type": "Vegetable"
-          },
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
-            "name": "Garlic Bread W/ EVOO",
-            "type": "Grain"
-          },
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -655,11 +643,35 @@
           {
             "name": "Homemade No Meat Lasagna",
             "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Carrot/Celery Sticks",
+            "type": "Vegetable"
+          },
+          {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
+          },
+          {
+            "name": "Garlic Bread W/ EVOO",
+            "type": "Grain"
           }
         ]
       },
       "2026-10-21": {
         "Lunch": [
+          {
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Penne w/ Marina Sauce (V)(H)",
+            "type": "Entr\u00e9e"
+          },
           {
             "name": "Carrot/Celery Sticks",
             "type": "Vegetable"
@@ -673,33 +685,13 @@
             "type": "Grain"
           },
           {
-            "name": "Bagel Option (K)(H)",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Chef Salad W/Chicken (H) Option",
-            "type": "Entr\u00e9e"
-          },
-          {
             "name": "Oatmeal Raisin Cookie",
             "type": "Dessert"
-          },
-          {
-            "name": "Penne w/ Marina Sauce (V)(H)",
-            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-22": {
         "Lunch": [
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
-            "name": "Homemade Greek Garbanzo Bean Salad",
-            "type": "Grain"
-          },
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -711,19 +703,19 @@
           {
             "name": "Chicken Gyros on Pita (H) Tzatziki",
             "type": "Entr\u00e9e"
-          }
-        ]
-      },
-      "2026-10-23": {
-        "Lunch": [
-          {
-            "name": "Mexican Street Corn",
-            "type": "Vegetable"
           },
           {
             "name": "Seasonal Fruit",
             "type": "Fruit"
           },
+          {
+            "name": "Homemade Greek Garbanzo Bean Salad",
+            "type": "Grain"
+          }
+        ]
+      },
+      "2026-10-23": {
+        "Lunch": [
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -735,11 +727,31 @@
           {
             "name": "Chef Salad W/Chicken (H) Option",
             "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Mexican Street Corn",
+            "type": "Vegetable"
+          },
+          {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           }
         ]
       },
       "2026-10-26": {
         "Lunch": [
+          {
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Pete's Ground Beef(H)Homemade Chili",
+            "type": "Entr\u00e9e"
+          },
           {
             "name": "Seasonal Fruit",
             "type": "Fruit"
@@ -753,6 +765,14 @@
             "type": "Grain"
           },
           {
+            "name": "Homemade Rice Pudding",
+            "type": "Dessert"
+          }
+        ]
+      },
+      "2026-10-27": {
+        "Lunch": [
+          {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
           },
@@ -761,17 +781,9 @@
             "type": "Entr\u00e9e"
           },
           {
-            "name": "Homemade Rice Pudding",
-            "type": "Dessert"
-          },
-          {
-            "name": "Pete's Ground Beef(H)Homemade Chili",
+            "name": "Mandarin Orange Chicken",
             "type": "Entr\u00e9e"
-          }
-        ]
-      },
-      "2026-10-27": {
-        "Lunch": [
+          },
           {
             "name": "Seasonal Fruit",
             "type": "Fruit"
@@ -781,37 +793,13 @@
             "type": "Grain"
           },
           {
-            "name": "Bagel Option (K)(H)",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "name": "Chef Salad W/Chicken (H) Option",
-            "type": "Entr\u00e9e"
-          },
-          {
             "name": "Fortune Cookie",
             "type": "Dessert"
-          },
-          {
-            "name": "Mandarin Orange Chicken",
-            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-28": {
         "Lunch": [
-          {
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
-            "name": "Crackers",
-            "type": "Grain"
-          },
-          {
-            "name": "Super Pretzel Whole Grain Soft Pretzels",
-            "type": "Grain"
-          },
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -823,19 +811,23 @@
           {
             "name": "Chef Salad W/Chicken (H) Option",
             "type": "Entr\u00e9e"
-          }
-        ]
-      },
-      "2026-10-29": {
-        "Lunch": [
-          {
-            "name": "Home Made Mash Potatoes",
-            "type": "Vegetable"
           },
           {
             "name": "Seasonal Fruit",
             "type": "Fruit"
           },
+          {
+            "name": "Crackers",
+            "type": "Grain"
+          },
+          {
+            "name": "Super Pretzel Whole Grain Soft Pretzels",
+            "type": "Grain"
+          }
+        ]
+      },
+      "2026-10-29": {
+        "Lunch": [
           {
             "name": "Bagel Option (K)(H)",
             "type": "Entr\u00e9e"
@@ -843,6 +835,14 @@
           {
             "name": "Chef Salad W/Chicken (H) Option",
             "type": "Entr\u00e9e"
+          },
+          {
+            "name": "Home Made Mash Potatoes",
+            "type": "Vegetable"
+          },
+          {
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           }
         ]
       },
