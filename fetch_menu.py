@@ -474,6 +474,13 @@ def main():
             dump_structure(raw_for_dump)
         if os.path.exists("menu.json"):
             print("Keeping the existing menu.json rather than emptying it.", file=sys.stderr)
+            # Still fill in index.html from the last good menu. Otherwise a
+            # freshly uploaded page (blank saved copy, no live-data link)
+            # would stay blank until a fetch next succeeds.
+            try:
+                update_index(json.load(open("menu.json")))
+            except Exception as e:
+                print(f"Could not refresh index.html from menu.json: {e}", file=sys.stderr)
             sys.exit(1)
 
     payload = {
