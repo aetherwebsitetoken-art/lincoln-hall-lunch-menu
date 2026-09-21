@@ -30,6 +30,10 @@ jobs:
         run: python3 fetch_menu.py
 
       - name: Commit updated menu (if it changed)
+        # Runs even if the fetch step failed: the fetcher still refreshes
+        # index.html from the last good data, and that should be saved.
+        # (If nothing changed, nothing is committed.)
+        if: success() || failure()
         id: commit
         run: |
           git config user.name "menu-bot"
