@@ -1,1795 +1,519 @@
 {
-  "generated_at": "2026-09-21T00:17:17.680764+00:00",
+  "generated_at": "2026-09-21T00:29:41.446829+00:00",
   "schools": {
     "Lincoln Hall": {
       "2026-09-14": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Spanish Rice",
+            "type": "Grain"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Beef Taco Monday (H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Cinnamon Churro",
+            "type": "Dessert"
           }
         ]
       },
       "2026-09-15": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Mexican Street Corn",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Cheese Quesadilla",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-09-16": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Tator Tots",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Burger (H)(V) PlantBased",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-09-17": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Homemade Greek Garbanzo Bean Salad",
+            "type": "Grain"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Chicken Gyros on Pita (H) Tzatziki",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-09-18": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Half Day",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Calories",
-            "type": ""
-          },
-          {
-            "name": "Cholesterol (mg)",
-            "type": ""
-          },
-          {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
+            "name": "No Lunch",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-09-21": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Crackers",
+            "type": "Grain"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Frito Lay Chips",
+            "type": "Grain"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Gluten",
-            "type": ""
+            "name": "Homemade Rice Pudding",
+            "type": "Dessert"
           },
           {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Pete's Ground Beef(H)Homemade Chili",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-09-22": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Fried Rice",
+            "type": "Grain"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Fortune Cookie",
+            "type": "Dessert"
           },
           {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Mandarin Orange Chicken",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-09-23": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Mediterranean Roasted Broccoli",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Fresh Mixed Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Garlic Bread W/ EVOO",
+            "type": "Grain"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Pesto Penne Pasta Rigate (V)",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-09-24": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Cajun Seasoned French Fries",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Roasted Turkey Wrap",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-09-25": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Carrot/Celery Sticks",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Garlic Bread W/ EVOO",
+            "type": "Grain"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Homemade No Meat Lasagna",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-09-28": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Spanish Rice",
+            "type": "Grain"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Beef (H) Taco Salad",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Cinnamon Churro",
+            "type": "Dessert"
           }
         ]
       },
       "2026-09-29": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Home Made Mash Potatoes",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Chicken & Biscuit Sandwich",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-09-30": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Crackers",
+            "type": "Grain"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Super Pretzel Whole Grain Soft Pretzels",
+            "type": "Grain"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Broccoli Cheese Soup",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-01": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Cajun Seasoned French Fries",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Grilled Cheese (V)",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-02": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Greek Broccoli Pasta Salad",
+            "type": "Grain"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Lincolnwood Cheese \"Pete\"zza(V)",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-05": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Spanish Rice",
+            "type": "Grain"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Beef (H) Taco Salad",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Cinnamon Churro",
+            "type": "Dessert"
           }
         ]
       },
       "2026-10-06": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Honey Butter Carrots",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Macaroni & Cheese(V)",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-07": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Carrot/Celery Sticks",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Garlic Bread W/ EVOO",
+            "type": "Grain"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Penne w/ Marina Sauce (V)(H)",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-08": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Homemade Cole Slaw",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Chicken Breaded Tender Wrap (H)",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-09": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Greek Broccoli Pasta Salad",
+            "type": "Grain"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Cheese Pete's zza",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-12": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Calories",
-            "type": ""
-          },
-          {
-            "name": "Cholesterol (mg)",
-            "type": ""
-          },
-          {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
+            "name": "No School",
             "type": ""
           }
         ]
@@ -1797,71 +521,7 @@
       "2026-10-13": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Calories",
-            "type": ""
-          },
-          {
-            "name": "Cholesterol (mg)",
-            "type": ""
-          },
-          {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
             "name": "nationalSchoolLunchWeek",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
             "type": ""
           }
         ]
@@ -1869,1124 +529,332 @@
       "2026-10-14": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Tator Tots",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Burger (H)(V) PlantBased",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-15": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Spanish Rice",
+            "type": "Grain"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Chicken Fajitas w/Tortilla",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-16": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Honey Butter Carrots",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Garlic Bread W/ EVOO",
+            "type": "Grain"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Alfredo Penne Rigatoni  (V)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-19": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Spanish Rice",
+            "type": "Grain"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Beef Taco Monday (H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Cinnamon Churro",
+            "type": "Dessert"
           }
         ]
       },
       "2026-10-20": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Carrot/Celery Sticks",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Garlic Bread W/ EVOO",
+            "type": "Grain"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Homemade No Meat Lasagna",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-21": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Carrot/Celery Sticks",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Garlic Bread W/ EVOO",
+            "type": "Grain"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Gluten",
-            "type": ""
+            "name": "Oatmeal Raisin Cookie",
+            "type": "Dessert"
           },
           {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Penne w/ Marina Sauce (V)(H)",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-22": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Homemade Greek Garbanzo Bean Salad",
+            "type": "Grain"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Chicken Gyros on Pita (H) Tzatziki",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-23": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Mexican Street Corn",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Cheese Quesadilla",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-26": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Crackers",
+            "type": "Grain"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Frito Lay Chips",
+            "type": "Grain"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Gluten",
-            "type": ""
+            "name": "Homemade Rice Pudding",
+            "type": "Dessert"
           },
           {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Pete's Ground Beef(H)Homemade Chili",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-27": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Fried Rice",
+            "type": "Grain"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Fortune Cookie",
+            "type": "Dessert"
           },
           {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Mandarin Orange Chicken",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-28": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Crackers",
+            "type": "Grain"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Super Pretzel Whole Grain Soft Pretzels",
+            "type": "Grain"
           },
           {
-            "name": "Egg",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Fiber (g)",
-            "type": ""
+            "name": "Broccoli Cheese Soup",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-29": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Home Made Mash Potatoes",
+            "type": "Vegetable"
           },
           {
-            "name": "Calories",
-            "type": ""
+            "name": "Seasonal Fruit",
+            "type": "Fruit"
           },
           {
-            "name": "Cholesterol (mg)",
-            "type": ""
+            "name": "Bagel Option (K)(H)",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Egg",
-            "type": ""
-          },
-          {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Gluten",
-            "type": ""
-          },
-          {
-            "name": "gluten-free",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "lacto-ovoVegetarian",
-            "type": ""
-          },
-          {
-            "name": "Milk",
-            "type": ""
-          },
-          {
-            "name": "No Known Allergens",
-            "type": ""
-          },
-          {
-            "name": "Potassium",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Soy",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
-          },
-          {
-            "name": "Wheat",
-            "type": ""
+            "name": "Chef Salad W/Chicken (H) Option",
+            "type": "Entr\u00e9e"
           }
         ]
       },
       "2026-10-30": {
         "Lunch": [
           {
-            "name": "Calcium (mg)",
-            "type": ""
+            "name": "Half Day",
+            "type": "Entr\u00e9e"
           },
           {
-            "name": "Calories",
-            "type": ""
-          },
-          {
-            "name": "Cholesterol (mg)",
-            "type": ""
-          },
-          {
-            "name": "Fiber (g)",
-            "type": ""
-          },
-          {
-            "name": "Iron (mg)",
-            "type": ""
-          },
-          {
-            "name": "Protein (g)",
-            "type": ""
-          },
-          {
-            "name": "Sat. Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Sodium (mg)",
-            "type": ""
-          },
-          {
-            "name": "Sugar (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Carbs (g)",
-            "type": ""
-          },
-          {
-            "name": "Total Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Trans Fat (g)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin A (iu)",
-            "type": ""
-          },
-          {
-            "name": "Vitamin C (mg)",
-            "type": ""
+            "name": "No Lunch",
+            "type": "Entr\u00e9e"
           }
         ]
       }
