@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SD74 Lunch Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#0d0d0f;--ink-soft:#54565c;--ink-faint:#93959c;
+    --paper:#fff;--seam:#f2f2f2;--seam-2:#e3e3e3;
+    --red:#d81324;
+    --display:'Anton','Arial Narrow',sans-serif;
+    --body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --ease:cubic-bezier(.4,0,.2,1);
+  }
+  html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:var(--paper);
+    color:var(--ink);font-family:var(--body);-webkit-text-size-adjust:100%}
+  button{font-family:inherit}
+  ::-webkit-scrollbar{width:8px;height:8px}
+  ::-webkit-scrollbar-track{background:var(--seam)}
+  ::-webkit-scrollbar-thumb{background:var(--seam-2);border-radius:4px}
+  ::-webkit-scrollbar-thumb:hover{background:var(--ink-faint)}
+  button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+
+  .page{display:flex;flex-direction:column;height:100%;opacity:0;animation:fade .45s var(--ease) forwards}
+  @keyframes fade{to{opacity:1}}
+
+  .top{flex-shrink:0;background:var(--ink);color:#fff;border-bottom:4px solid var(--red);
+    opacity:0;transform:translateY(-8px);animation:drop .45s var(--ease) .05s forwards}
+  @keyframes drop{to{opacity:1;transform:none}}
+  .top-in{max-width:1200px;margin:0 auto;width:100%;padding:10px 16px;
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px}
+  .mark{width:38px;height:38px;border-radius:7px;flex-shrink:0;
+    background:repeating-linear-gradient(135deg,var(--red) 0 7px,var(--ink) 7px 14px);
+    border:1px solid rgba(255,255,255,.16);transition:transform .35s var(--ease)}
+  .brand:hover .mark{transform:rotate(8deg) scale(1.06)}
+  .brand h1{font-family:var(--display);font-weight:400;font-size:20px;margin:0;letter-spacing:.3px;line-height:1}
+  .brand p{margin:3px 0 0;font-size:11px;color:#b8bbc3;font-weight:500}
+  .status{margin-left:auto;font-size:10px;color:#989aa6;text-align:right;min-height:12px}
+
+  .tabs{display:flex;gap:3px;background:rgba(255,255,255,.08);border-radius:8px;padding:3px}
+  .tabs button{border:none;background:transparent;color:#c5c7cf;cursor:pointer;font-size:13px;
+    font-weight:600;padding:6px 14px;border-radius:6px;white-space:nowrap;
+    transition:background .2s,color .2s}
+  .tabs button.on{background:var(--red);color:#fff}
+
+  .strip{flex-shrink:0;background:var(--seam);border-bottom:1px solid var(--seam-2);
+    opacity:0;transform:translateY(-6px);animation:drop .45s var(--ease) .12s forwards}
+  .strip-in{max-width:1200px;margin:0 auto;width:100%;padding:9px 16px;
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .strip .lab{font-size:12px;font-weight:600;color:var(--ink-soft)}
+  .nav{display:flex;gap:6px;margin-left:auto}
+  .nav button{border:1px solid var(--seam-2);background:var(--paper);color:var(--ink-soft);
+    font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;cursor:pointer;
+    transition:background .15s,color .15s,border-color .15s}
+  .nav button:hover{border-color:var(--ink-faint)}
+  .nav button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+
+  main{flex:1;min-height:0;overflow-y:auto}
+  .wrap{max-width:1200px;margin:0 auto;width:100%;padding:16px 16px 48px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+
+  .day{background:var(--paper);border:1px solid var(--seam-2);border-radius:12px;overflow:hidden;
+    display:flex;flex-direction:column;opacity:0;transform:translateY(8px);
+    animation:cardin .35s var(--ease) forwards;transition:box-shadow .2s,transform .2s}
+  .day:hover{box-shadow:0 8px 24px rgba(0,0,0,.09);transform:translateY(-2px)}
+  @keyframes cardin{to{opacity:1;transform:none}}
+  .day.today{border-color:var(--red);box-shadow:0 0 0 2px rgba(216,19,36,.16)}
+  .day.past{opacity:.5}
+
+  .day h3{margin:0;padding:10px 12px;background:var(--ink);color:#fff;font-size:12px;
+    font-weight:700;letter-spacing:.4px;text-transform:uppercase;
+    display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .day.today h3{background:var(--red)}
+  .day h3 span.d{font-family:var(--display);font-weight:400;font-size:15px;letter-spacing:.5px}
+  .badge{background:rgba(255,255,255,.18);border-radius:999px;padding:2px 8px;font-size:10px}
+
+  .items{padding:10px 12px 12px;display:flex;flex-direction:column;gap:7px;flex:1}
+  .item{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;line-height:1.35}
+  .item .t{flex-shrink:0;font-size:9px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.4px;color:var(--ink-faint);width:46px;padding-top:3px}
+  .item.entree .n{font-weight:700}
+  .item.entree .t{color:var(--red)}
+  .none{font-size:13px;color:var(--ink-faint);font-style:normal;padding:4px 0}
+
+  .empty{padding:56px 20px;text-align:center;color:var(--ink-soft);font-size:14px;line-height:1.6}
+  .empty b{display:block;color:var(--ink);font-size:16px;margin-bottom:8px}
+  .retry{margin-top:14px;background:var(--ink);color:#fff;border:none;padding:9px 18px;
+    border-radius:8px;font-weight:600;font-size:13px;cursor:pointer}
+  .retry:hover{background:var(--red)}
+
+  .foot{max-width:1200px;margin:22px auto 0;padding:0 16px;font-size:11px;color:var(--ink-faint);
+    text-align:center;line-height:1.6}
+
+  @media (max-width:640px){
+    .top-in{padding:8px 12px;gap:8px}
+    .brand p{display:none}
+    .brand h1{font-size:17px}
+    .status{width:100%;text-align:left;margin-left:0}
+    .grid{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+    .page,.top,.strip,.day{opacity:1!important;transform:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="top">
+    <div class="top-in">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div><h1>SD74 Lunch</h1><p>Lincolnwood School District 74</p></div>
+      </div>
+      <div class="tabs" id="mealTabs" role="tablist" aria-label="Meal"></div>
+      <p class="status" id="status">&nbsp;</p>
+    </div>
+  </header>
+
+  <section class="strip">
+    <div class="strip-in">
+      <span class="lab" id="rangeLabel">Loading menu…</span>
+      <div class="tabs" id="schoolTabs" role="tablist" aria-label="School"
+           style="background:var(--seam-2)"></div>
+      <div class="nav">
+        <button id="bThis" class="on">This week</button>
+        <button id="bNext">Next week</button>
+        <button id="bAll">All posted</button>
+      </div>
+    </div>
+  </section>
+
+  <main><div class="wrap"><div class="grid" id="grid"></div>
+    <p class="foot" id="foot"></p>
+  </div></main>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  'use strict';
+
+  // ─────────────────────────────────────────────────────────────────
+  // WHERE THE LIVE MENU COMES FROM
+  // Leave as 'menu.json' if this page is hosted alongside that file.
+  // If you paste this file's code directly into Google Sites, the
+  // updater fills in the full jsDelivr URL automatically.
+  // ─────────────────────────────────────────────────────────────────
+  const MENU_URL = /*URL_START*/'menu.json'/*URL_END*/;
+
+  // Offline copy, refreshed automatically on every run so the page is
+  // never blank if the live fetch fails.
+  const FALLBACK = /*FALLBACK_START*/{"generated_at":null,"schools":{}}/*FALLBACK_END*/;
+
+  let DATA = {}, school = null, meal = null, range = 'this';
+
+  const $ = id => document.getElementById(id);
+  const grid=$('grid'), statusEl=$('status'), rangeLabel=$('rangeLabel'),
+        mealTabs=$('mealTabs'), schoolTabs=$('schoolTabs'), foot=$('foot');
+
+  const pad = n => n<10?'0'+n:''+n;
+  const key = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+  const fromKey = k => { const [y,m,d]=k.split('-').map(Number); return new Date(y,m-1,d); };
+  const TODAY = key(new Date());
+
+  // Monday of the week containing d
+  function weekStart(d){
+    const x = new Date(d); const dow = (x.getDay()+6)%7;   // Mon=0
+    x.setDate(x.getDate()-dow); x.setHours(0,0,0,0); return x;
+  }
+  function inRange(k){
+    if(range==='all') return true;
+    const start = weekStart(new Date());
+    if(range==='next') start.setDate(start.getDate()+7);
+    const end = new Date(start); end.setDate(end.getDate()+6);
+    const d = fromKey(k);
+    return d >= start && d <= end;
+  }
+
+  const fmtDay  = k => fromKey(k).toLocaleDateString('en-US',{weekday:'long'});
+  const fmtDate = k => fromKey(k).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+
+  function days(){ return (DATA.schools && DATA.schools[school]) || {}; }
+  function mealsAvailable(){
+    const s = days(); const set = new Set();
+    Object.values(s).forEach(m => Object.keys(m).forEach(x => set.add(x)));
+    return [...set].sort((a,b)=> a==='Lunch'?-1: b==='Lunch'?1: a.localeCompare(b));
+  }
+
+  function tabButton(label, on, onClick){
+    const b=document.createElement('button');
+    b.textContent=label; if(on) b.className='on';
+    b.setAttribute('role','tab'); b.setAttribute('aria-selected',String(!!on));
+    b.addEventListener('click',onClick);
+    return b;
+  }
+
+  function renderTabs(){
+    const names = Object.keys(DATA.schools||{});
+    schoolTabs.innerHTML='';
+    schoolTabs.style.display = names.length>1 ? '' : 'none';
+    names.forEach(n => schoolTabs.appendChild(
+      tabButton(n, n===school, ()=>{ school=n; ensureMeal(); render(); })));
+
+    const ms = mealsAvailable();
+    mealTabs.innerHTML='';
+    mealTabs.style.display = ms.length>1 ? '' : 'none';
+    ms.forEach(x => mealTabs.appendChild(
+      tabButton(x, x===meal, ()=>{ meal=x; render(); })));
+  }
+
+  function ensureMeal(){
+    const ms = mealsAvailable();
+    if(!ms.includes(meal)) meal = ms[0] || null;
+  }
+
+  function render(){
+    renderTabs();
+    ['bThis','bNext','bAll'].forEach((id,i)=>{
+      $(id).classList.toggle('on', range===['this','next','all'][i]);
+    });
+
+    const s = days();
+    const keys = Object.keys(s).sort().filter(k => (s[k][meal]||[]).length).filter(inRange);
+
+    grid.innerHTML='';
+    if(!keys.length){ grid.appendChild(emptyState()); rangeLabel.textContent=''; return; }
+
+    rangeLabel.textContent = `${fmtDate(keys[0])} – ${fmtDate(keys[keys.length-1])}`;
+
+    keys.forEach((k,i)=>{
+      const items = s[k][meal] || [];
+      const card=document.createElement('div');
+      card.className='day'+(k===TODAY?' today':'')+(k<TODAY?' past':'');
+      card.style.animationDelay=`${Math.min(i,12)*35}ms`;
+
+      const h=document.createElement('h3');
+      const d=document.createElement('span'); d.className='d'; d.textContent=fmtDay(k);
+      const b=document.createElement('span'); b.className='badge';
+      b.textContent = k===TODAY ? 'Today' : fmtDate(k);
+      h.append(d,b); card.appendChild(h);
+
+      const box=document.createElement('div'); box.className='items';
+      if(!items.length){
+        const n=document.createElement('div'); n.className='none';
+        n.textContent='No menu posted'; box.appendChild(n);
+      }
+      items.forEach(it=>{
+        const row=document.createElement('div');
+        const isEntree=/entree|main/i.test(it.type||'');
+        row.className='item'+(isEntree?' entree':'');
+        const t=document.createElement('span'); t.className='t';
+        t.textContent=(it.type||'').replace(/s$/,'').slice(0,8);
+        const n=document.createElement('span'); n.className='n'; n.textContent=it.name;
+        row.append(t,n); box.appendChild(row);
+      });
+      card.appendChild(box);
+      grid.appendChild(card);
+    });
+
+    const total = keys.reduce((a,k)=>a+(s[k][meal]||[]).length,0);
+    foot.textContent = `${keys.length} day${keys.length===1?'':'s'} shown · ${total} items · `
+      + 'Menus can change due to product availability. Source: MealViewer.';
+  }
+
+  function emptyState(){
+    const d=document.createElement('div'); d.className='empty';
+    const b=document.createElement('b');
+    const has = Object.keys(days()).length;
+    b.textContent = has ? 'No menu for this week' : 'Menu unavailable';
+    d.appendChild(b);
+    d.appendChild(document.createTextNode(has
+      ? 'Try "All posted" to see every day the district has published.'
+      : "Couldn't load the menu right now. It refreshes automatically each day."));
+    if(!has){
+      const r=document.createElement('button'); r.className='retry'; r.textContent='Try again';
+      r.addEventListener('click',load);
+      d.appendChild(document.createElement('br')); d.appendChild(r);
+    }
+    return d;
+  }
+
+  ['bThis','bNext','bAll'].forEach((id,i)=>{
+    $(id).addEventListener('click',()=>{ range=['this','next','all'][i]; render(); });
+  });
+
+  function fmtWhen(iso){
+    try{ return new Date(iso).toLocaleString('en-US',
+      {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}); }
+    catch(e){ return null; }
+  }
+
+  function adopt(payload, live){
+    DATA = payload;
+    const names = Object.keys(DATA.schools||{});
+    school = names[0] || null;
+    ensureMeal();
+    // If this week has nothing but later weeks do, show everything instead
+    // of greeting the user with an empty screen.
+    const s = days();
+    const hasThisWeek = Object.keys(s).some(k => (s[k][meal]||[]).length && inRange(k));
+    if(!hasThisWeek && Object.keys(s).length) range='all';
+    render();
+  }
+
+  async function load(){
+    statusEl.textContent='Loading…';
+    try{
+      const res = await fetch(MENU_URL,{cache:'no-store'});
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      const data = await res.json();
+      if(!data || !data.schools || !Object.keys(data.schools).length)
+        throw new Error('no menu data');
+      const when = fmtWhen(data.generated_at);
+      statusEl.textContent = when ? `Updated ${when}` : 'Live menu';
+      statusEl.title = 'Loaded from '+MENU_URL;
+      adopt(data,true);
+    }catch(err){
+      console.warn('Live menu unavailable, using saved copy:', err);
+      statusEl.textContent = (FALLBACK.schools && Object.keys(FALLBACK.schools).length)
+        ? 'Saved menu' : 'Menu unavailable';
+      statusEl.title = 'Could not load live menu ('+(err && err.message||err)+').';
+      adopt(FALLBACK,false);
+    }
+  }
+
+  load();
+});
+</script>
+</body>
+</html>
