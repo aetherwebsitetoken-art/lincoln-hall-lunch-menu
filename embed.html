@@ -1,4 +1,203 @@
-{
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SD74 Lunch Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#0d0d0f;--soft:#55575e;--faint:#96989f;
+    --paper:#fff;--seam:#f4f4f4;--seam2:#ececec;--line:#e4e4e4;--red:#d81324;
+    --display:'Lexend',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --body:'Lexend',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --ease:cubic-bezier(.4,0,.2,1);
+  }
+  html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:var(--seam);
+    color:var(--ink);font-family:var(--body);-webkit-text-size-adjust:100%}
+  button{font-family:inherit}
+  ::-webkit-scrollbar{width:8px}
+  ::-webkit-scrollbar-track{background:var(--seam)}
+  ::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+  button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+
+  .page{display:flex;flex-direction:column;height:100%;opacity:0;animation:fade .4s var(--ease) forwards}
+  @keyframes fade{to{opacity:1}}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  /* ---------- Header ---------- */
+  .bar{flex-shrink:0;background:var(--ink);color:#fff;border-bottom:4px solid var(--red)}
+  .bar-in{max-width:1200px;margin:0 auto;width:100%;padding:11px 18px;
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:11px;flex-shrink:0}
+  .mark{width:40px;height:40px;border-radius:8px;flex-shrink:0;
+    background:repeating-linear-gradient(135deg,var(--red) 0 7px,var(--ink) 7px 14px);
+    border:1px solid rgba(255,255,255,.16);transition:transform .35s var(--ease)}
+  .brand:hover .mark{transform:rotate(8deg) scale(1.06)}
+  .brand h1{font-family:var(--display);font-weight:700;font-size:20px;margin:0;letter-spacing:-.2px;line-height:1.1}
+  .brand h1 span{color:var(--red)}
+  .brand p{margin:4px 0 0;font-size:11px;color:#a9acb4;font-weight:500}
+
+  .ctrls{display:flex;align-items:center;gap:10px;margin-left:auto;flex-wrap:wrap}
+  .seg{display:flex;background:rgba(255,255,255,.09);border-radius:8px;padding:3px;gap:2px}
+  .seg button{border:none;background:transparent;color:#c7c9d0;cursor:pointer;font-size:13px;
+    font-weight:600;padding:6px 13px;border-radius:6px;transition:background .18s,color .18s}
+  .seg button.on{background:var(--red);color:#fff}
+
+  .nav{display:flex;align-items:center;gap:7px}
+  .nav .arw{border:none;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;width:32px;height:32px;
+    border-radius:50%;font-size:17px;line-height:1;flex-shrink:0;display:flex;align-items:center;
+    justify-content:center;transition:background .15s,transform .15s}
+  .nav .arw:hover{background:var(--red)}
+  .nav .arw:active{transform:scale(.88)}
+  .nav .lbl{min-width:132px;text-align:center;font-size:13px;font-weight:600;white-space:nowrap}
+  .nav .tdy{border:none;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;border-radius:999px;
+    padding:7px 13px;font-size:12px;font-weight:600;white-space:nowrap;transition:background .15s}
+  .nav .tdy:hover{background:var(--red)}
+  .status{font-size:10px;color:#8e9099;margin:0;width:100%;text-align:right}
+
+  /* ---------- Headline banner ---------- */
+  .hero{flex-shrink:0;background:var(--paper);border-bottom:1px solid var(--line)}
+  .hero-in{max-width:1200px;margin:0 auto;padding:16px 18px 15px;display:flex;gap:18px;align-items:center}
+  .plate{width:62px;height:62px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;
+    justify-content:center;font-size:30px;background:#fcebed;
+    box-shadow:inset 0 0 0 3px #fff,0 0 0 2px var(--red)}
+  .hero .txt{min-width:0;flex:1}
+  .hero .when{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--red)}
+  .hero .dish{font-family:var(--display);font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.4px;
+    margin:3px 0 7px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{font-size:12px;background:var(--seam);border:1px solid var(--line);color:var(--soft);
+    padding:3px 10px;border-radius:999px}
+  .hero .opts{font-size:11.5px;color:var(--faint);margin-top:8px}
+
+  main{flex:1;min-height:0;overflow-y:auto}
+  .wrap{max-width:1200px;margin:0 auto;padding:18px 18px 44px}
+
+  /* ---------- Week view ---------- */
+  .week{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    display:flex;flex-direction:column;opacity:0;animation:rise .3s var(--ease) forwards;
+    transition:box-shadow .2s,transform .2s}
+  .day:hover{box-shadow:0 10px 24px rgba(0,0,0,.08);transform:translateY(-2px)}
+  .day.today{border-color:var(--red);box-shadow:0 0 0 2px rgba(216,19,36,.16)}
+  .day.off{background:var(--seam2)}
+  .day h2{margin:0;padding:11px 13px 10px;display:flex;justify-content:space-between;align-items:baseline;
+    gap:6px;border-bottom:1px solid var(--line)}
+  .day h2 .dow{font-family:var(--display);font-weight:700;font-size:15.5px;letter-spacing:-.2px}
+  .day h2 .dt{font-size:11px;font-weight:700;color:var(--faint)}
+  .day.today h2{background:var(--red);border-color:var(--red)}
+  .day.today h2 .dow,.day.today h2 .dt{color:#fff}
+
+  .db{padding:13px 13px 12px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .feat{font-size:15.5px;font-weight:700;line-height:1.3}
+  .sect{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--faint);
+    margin-bottom:4px}
+  .sides{display:flex;flex-direction:column;gap:4px}
+  .sides span{font-size:13px;color:var(--soft);line-height:1.35;padding-left:11px;position:relative}
+  .sides span::before{content:'';position:absolute;left:0;top:.55em;width:4px;height:4px;border-radius:50%;
+    background:var(--red)}
+  .alts{margin-top:auto;background:var(--seam);border-radius:9px;padding:8px 10px}
+  .alts span{display:block;font-size:12px;color:var(--soft);line-height:1.4}
+  .off-note{font-size:13px;color:var(--faint)}
+
+  .code{display:inline-block;font-size:9px;font-weight:700;color:var(--faint);border:1px solid var(--line);
+    border-radius:4px;padding:0 3px;margin-left:3px;vertical-align:1px;line-height:1.4}
+
+  /* ---------- Month view ---------- */
+  .mhead{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:6px}
+  .mhead div{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--soft);
+    text-align:center}
+  .month{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+  .cell{background:var(--paper);border:1px solid var(--line);border-radius:11px;min-height:96px;padding:9px 10px;
+    display:flex;flex-direction:column;gap:5px;cursor:pointer;opacity:0;animation:rise .28s var(--ease) forwards;
+    transition:box-shadow .15s,transform .15s,border-color .15s}
+  .cell:hover{box-shadow:0 8px 18px rgba(0,0,0,.08);transform:translateY(-2px);border-color:var(--faint)}
+  .cell.out{background:transparent;border-style:dashed;cursor:default;opacity:.55}
+  .cell.out:hover{box-shadow:none;transform:none;border-color:var(--line)}
+  .cell.empty{background:var(--seam2)}
+  .cell.today{border-color:var(--red);box-shadow:0 0 0 2px rgba(216,19,36,.16)}
+  .cell .n{font-size:12px;font-weight:700;color:var(--soft)}
+  .cell.today .n{color:var(--red)}
+  .cell .f{font-size:13px;font-weight:700;line-height:1.25}
+  .cell .s{font-size:11px;color:var(--faint);line-height:1.3;margin-top:auto}
+
+  .empty-state{padding:60px 20px;text-align:center;color:var(--soft);font-size:14px;line-height:1.6}
+  .empty-state b{display:block;color:var(--ink);font-size:16px;margin-bottom:8px}
+  .retry{margin-top:14px;background:var(--ink);color:#fff;border:none;padding:9px 18px;border-radius:8px;
+    font-weight:600;font-size:13px;cursor:pointer}
+  .retry:hover{background:var(--red)}
+  .note{text-align:center;font-size:11px;color:var(--faint);margin:20px 0 0;line-height:1.6}
+
+  @media (max-width:900px){ .week{grid-template-columns:repeat(2,minmax(0,1fr))} }
+  @media (max-width:640px){
+    .bar-in{padding:9px 12px;gap:9px}
+    .brand p{display:none}
+    .ctrls{width:100%;margin-left:0;justify-content:space-between}
+    .nav .lbl{min-width:0}
+    .status{text-align:left}
+    .hero-in{padding:12px;gap:12px}
+    .plate{width:48px;height:48px;font-size:24px}
+    .hero .dish{font-size:22px}
+    .week{grid-template-columns:1fr}
+    .wrap{padding:12px 12px 36px}
+    .month,.mhead{gap:4px}
+    .cell{min-height:70px;padding:6px}
+    .cell .f{font-size:11px}
+    .cell .s{display:none}
+    .day:hover,.cell:hover{transform:none;box-shadow:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+    .page,.day,.cell{opacity:1!important;transform:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="bar">
+    <div class="bar-in">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div><h1>SD74 <span>Lunch</span></h1><p>Lincolnwood School District 74</p></div>
+      </div>
+      <div class="ctrls">
+        <div class="seg" id="meals" role="tablist" aria-label="Meal"></div>
+        <div class="seg" role="tablist" aria-label="View">
+          <button id="vWeek" class="on">Week</button>
+          <button id="vMonth">Month</button>
+        </div>
+        <div class="nav">
+          <button class="arw" id="prev" aria-label="Previous">‹</button>
+          <span class="lbl" id="lbl">Loading…</span>
+          <button class="arw" id="next" aria-label="Next">›</button>
+          <button class="tdy" id="tdy">Today</button>
+        </div>
+      </div>
+      <p class="status" id="status">&nbsp;</p>
+    </div>
+  </header>
+
+  <section class="hero" id="hero"></section>
+
+  <main><div class="wrap">
+    <div id="view"></div>
+    <p class="note" id="note"></p>
+  </div></main>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  'use strict';
+
+  // TEMPLATE. Don't paste this file into Google Sites -- paste embed.html
+  // from the repository. The updater builds embed.html from this template
+  // on every run, with the two lines below filled in.
+  const MENU_URL = /*URL_START*/'https://cdn.jsdelivr.net/gh/aetherwebsitetoken-art/lincoln-hall-lunch-menu@main/menu.json'/*URL_END*/;
+  const FALLBACK = /*FALLBACK_START*/{
   "generated_at": "2026-09-21T23:06:43.338250+00:00",
   "schools": {
     "Lincoln Hall": {
@@ -1335,4 +1534,326 @@
     }
   },
   "source": "MealViewer (api.mealviewer.com)"
-}
+}/*FALLBACK_END*/;
+
+  let DATA={}, school=null, meal=null, mode='week', anchor=null;
+
+  const $=id=>document.getElementById(id);
+  const viewEl=$('view'), hero=$('hero'), lbl=$('lbl'), statusEl=$('status'),
+        mealsEl=$('meals'), noteEl=$('note');
+
+  // ---------- Dates ----------
+  const pad=n=>n<10?'0'+n:''+n;
+  const key=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+  const fromKey=k=>{const [y,m,d]=k.split('-').map(Number);return new Date(y,m-1,d);};
+  const addDays=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x;};
+  const fmt=(d,o)=>d.toLocaleDateString('en-US',o);
+  const TODAY=key(new Date());
+
+  function mondayOf(d){const x=new Date(d);x.setHours(0,0,0,0);x.setDate(x.getDate()-((x.getDay()+6)%7));return x;}
+  // Saturday/Sunday belong to the week ahead, not the one just finished.
+  function schoolWeekMonday(now){
+    const m=mondayOf(now),dow=now.getDay();
+    return (dow===0||dow===6)?addDays(m,7):m;
+  }
+
+  // ---------- Data access ----------
+  const schoolDays=()=>(DATA.schools&&DATA.schools[school])||{};
+  const itemsFor=k=>{const d=schoolDays()[k];return (d&&d[meal])||[];};
+
+  function allMeals(){
+    const set=new Set();
+    Object.values(schoolDays()).forEach(m=>Object.keys(m).forEach(x=>set.add(x)));
+    return [...set].sort((a,b)=>a==='Lunch'?-1:b==='Lunch'?1:a.localeCompare(b));
+  }
+
+  // The fetcher marks each day's real lunch ("featured") and the daily
+  // fallback choices ("alt"). Older data without those flags falls back to
+  // treating the first entree-like item as the headline.
+  const ENTREE_RE=/entr[ée]e|main|hot\s*food|featured/i;
+  const ALT_RE=/\b(option|alternate)\b/i;
+  function parts(items){
+    if(!items.length) return {feat:null,sides:[],alts:[]};
+    let feat=items.find(i=>i.featured);
+    const isAlt=i=>i.alt!==undefined?i.alt:ALT_RE.test(i.name);
+    if(!feat) feat=items.find(i=>ENTREE_RE.test(i.type||'')&&!isAlt(i))
+                  ||items.find(i=>!isAlt(i))||items[0];
+    return {
+      feat,
+      sides:items.filter(i=>i!==feat&&!isAlt(i)),
+      alts:items.filter(i=>i!==feat&&isAlt(i))
+    };
+  }
+
+  // Menu names often carry codes like "(K)(H)" and run words together
+  // ("Beef(H)Homemade"). Split the codes out and show them as small tags
+  // rather than guessing what each one stands for.
+  function nameNode(name,cls){
+    const el=document.createElement('span'); if(cls) el.className=cls;
+    const codes=[];
+    let text=(name||'').replace(/\(\s*([A-Z]{1,3})\s*\)/g,(_,c)=>{codes.push(c);return ' ';})
+                       .replace(/\s+/g,' ').replace(/\s+,/g,',').trim();
+    text=text.replace(/\s+Option$/i,'').trim()||name;
+    el.appendChild(document.createTextNode(text));
+    [...new Set(codes)].forEach(c=>{
+      const t=document.createElement('span'); t.className='code'; t.textContent=c; el.appendChild(t);
+    });
+    return el;
+  }
+  const plainName=n=>(n||'').replace(/\(\s*[A-Z]{1,3}\s*\)/g,' ').replace(/\s+/g,' ').trim();
+
+  // A little food emoji for the banner, picked from the dish name.
+  function emojiFor(n){
+    const s=(n||'').toLowerCase();
+    const map=[[/chili|soup|stew/,'🍲'],[/pizza/,'🍕'],[/taco|burrito|nacho|quesadilla/,'🌮'],
+      [/burger/,'🍔'],[/hot\s*dog/,'🌭'],[/chicken|tender|nugget|wing/,'🍗'],[/pasta|penne|spaghetti|lasagna|mac/,'🍝'],
+      [/wrap|sandwich|sub|panini/,'🥪'],[/rice|teriyaki|orange chicken|fried rice/,'🍚'],[/salad/,'🥗'],
+      [/pancake|waffle|french toast/,'🥞'],[/bagel|muffin|bread/,'🥯'],[/egg/,'🍳'],[/fish/,'🐟']];
+    for(const [re,e] of map) if(re.test(s)) return e;
+    return '🍽️';
+  }
+
+  // ---------- Header controls ----------
+  function renderMeals(){
+    const ms=allMeals(); mealsEl.innerHTML='';
+    mealsEl.style.display=ms.length>1?'':'none';
+    ms.forEach(x=>{
+      const b=document.createElement('button'); b.textContent=x; if(x===meal) b.className='on';
+      b.addEventListener('click',()=>{meal=x;render();}); mealsEl.appendChild(b);
+    });
+  }
+
+  // ---------- Headline banner ----------
+  function renderHero(){
+    let k=TODAY, when="Today's lunch";
+    if(!itemsFor(k).length){
+      const up=Object.keys(schoolDays()).filter(x=>x>TODAY&&itemsFor(x).length).sort()[0];
+      if(!up){hero.style.display='none';return;}
+      k=up; when=`${fmt(fromKey(k),{weekday:'long'})}'s ${(meal||'lunch').toLowerCase()} · ${fmt(fromKey(k),{month:'short',day:'numeric'})}`;
+    } else if(meal && meal!=='Lunch') when=`Today's ${meal.toLowerCase()}`;
+    hero.style.display='';
+
+    const {feat,sides,alts}=parts(itemsFor(k));
+    hero.innerHTML='';
+    const inn=document.createElement('div'); inn.className='hero-in';
+    const plate=document.createElement('div'); plate.className='plate'; plate.textContent=emojiFor(feat&&feat.name);
+    const txt=document.createElement('div'); txt.className='txt';
+    const w=document.createElement('div'); w.className='when'; w.textContent=when;
+    const dish=document.createElement('div'); dish.className='dish'; dish.textContent=plainName(feat&&feat.name);
+    txt.append(w,dish);
+    if(sides.length){
+      const tags=document.createElement('div'); tags.className='tags';
+      sides.forEach(s=>{const t=document.createElement('span');t.className='tag';t.textContent=plainName(s.name);tags.appendChild(t);});
+      txt.appendChild(tags);
+    }
+    if(alts.length){
+      const o=document.createElement('div'); o.className='opts';
+      o.textContent='Also available: '+alts.map(a=>plainName(a.name).replace(/\s+Option$/i,'')).join(' · ');
+      txt.appendChild(o);
+    }
+    inn.append(plate,txt); hero.appendChild(inn);
+  }
+
+  // ---------- Week view ----------
+  function renderWeek(){
+    const mon=anchor;
+    lbl.textContent=`${fmt(mon,{month:'short',day:'numeric'})} – ${fmt(addDays(mon,4),{month:'short',day:'numeric'})}`;
+    const grid=document.createElement('div'); grid.className='week';
+    let shown=0;
+    for(let i=0;i<5;i++){
+      const d=addDays(mon,i),k=key(d),items=itemsFor(k);
+      if(items.length) shown++;
+      const card=document.createElement('div');
+      card.className='day'+(k===TODAY?' today':'')+(items.length?'':' off');
+      card.style.animationDelay=`${i*45}ms`;
+      const h=document.createElement('h2');
+      const a=document.createElement('span');a.className='dow';a.textContent=fmt(d,{weekday:'long'});
+      const b=document.createElement('span');b.className='dt';
+      b.textContent=k===TODAY?'TODAY':fmt(d,{month:'short',day:'numeric'}).toUpperCase();
+      h.append(a,b); card.appendChild(h);
+
+      const body=document.createElement('div'); body.className='db';
+      if(!items.length){
+        const n=document.createElement('div');n.className='off-note';n.textContent='No menu posted';body.appendChild(n);
+      }else{
+        const {feat,sides,alts}=parts(items);
+        body.appendChild(nameNode(feat.name,'feat'));
+        if(sides.length){
+          const wrap=document.createElement('div');
+          const t=document.createElement('div');t.className='sect';t.textContent='Served with';
+          const l=document.createElement('div');l.className='sides';
+          sides.forEach(s=>l.appendChild(nameNode(s.name)));
+          wrap.append(t,l); body.appendChild(wrap);
+        }
+        if(alts.length){
+          const box=document.createElement('div');box.className='alts';
+          const t=document.createElement('div');t.className='sect';t.textContent='Daily options';
+          box.appendChild(t);
+          alts.forEach(x=>{const s=nameNode(x.name);s.style.display='block';s.style.fontSize='12px';s.style.color='var(--soft)';box.appendChild(s);});
+          body.appendChild(box);
+        }
+      }
+      card.appendChild(body); grid.appendChild(card);
+    }
+    viewEl.innerHTML=''; viewEl.appendChild(grid);
+    noteEl.textContent=shown?'Menus can change due to product availability. Source: MealViewer.'
+                            :'Nothing posted for this week yet — use the arrows to browse, or switch to Month.';
+  }
+
+  // ---------- Month view ----------
+  function renderMonth(){
+    const first=new Date(anchor.getFullYear(),anchor.getMonth(),1);
+    const last=new Date(anchor.getFullYear(),anchor.getMonth()+1,0);
+    lbl.textContent=fmt(first,{month:'long',year:'numeric'});
+
+    const head=document.createElement('div'); head.className='mhead';
+    ['Mon','Tue','Wed','Thu','Fri'].forEach(x=>{const d=document.createElement('div');d.textContent=x;head.appendChild(d);});
+    const grid=document.createElement('div'); grid.className='month';
+
+    // Start on the Monday of the week containing the 1st, finish on the
+    // Friday of the week containing the last day; weekends are skipped.
+    let d=mondayOf(first), n=0, shown=0;
+    const end=addDays(mondayOf(last),4);
+    while(d<=end){
+      for(let i=0;i<5;i++){
+        const day=addDays(d,i),k=key(day),inMonth=day.getMonth()===first.getMonth();
+        const items=itemsFor(k);
+        const c=document.createElement('div');
+        c.className='cell'+(inMonth?'':' out')+(inMonth&&!items.length?' empty':'')+(k===TODAY?' today':'');
+        c.style.animationDelay=`${Math.min(n,24)*14}ms`; n++;
+        const num=document.createElement('div');num.className='n';num.textContent=day.getDate();
+        c.appendChild(num);
+        if(inMonth&&items.length){
+          shown++;
+          const {feat,sides}=parts(items);
+          const f=document.createElement('div');f.className='f';f.textContent=plainName(feat.name);
+          c.appendChild(f);
+          if(sides.length){
+            const s=document.createElement('div');s.className='s';
+            s.textContent=sides.slice(0,2).map(x=>plainName(x.name)).join(', ')+(sides.length>2?` +${sides.length-2}`:'');
+            c.appendChild(s);
+          }
+        }
+        if(inMonth) c.addEventListener('click',()=>{mode='week';anchor=mondayOf(day);render();});
+        grid.appendChild(c);
+      }
+      d=addDays(d,7);
+    }
+    viewEl.innerHTML=''; viewEl.append(head,grid);
+    noteEl.textContent=shown?'Tap any day to see its full menu. Menus can change due to product availability.'
+                            :'No menu posted for this month yet.';
+  }
+
+  // ---------- Render ----------
+  function render(){
+    renderMeals();
+    $('vWeek').classList.toggle('on',mode==='week');
+    $('vMonth').classList.toggle('on',mode==='month');
+    if(!Object.keys(schoolDays()).length){
+      hero.style.display='none';
+      lbl.textContent='';
+      viewEl.innerHTML='';
+      viewEl.appendChild(emptyState());
+      noteEl.textContent='';
+      return;
+    }
+    renderHero();
+    mode==='week'?renderWeek():renderMonth();
+  }
+
+  function emptyState(){
+    const d=document.createElement('div');d.className='empty-state';
+    // A copy that still has the placeholder link was pasted before the
+    // updater filled it in. Say so plainly -- only the site owner will ever
+    // see this, and it's the one message that tells them how to fix it.
+    const unlinked = !/^https?:/i.test(MENU_URL);
+    const b=document.createElement('b');
+    b.textContent = unlinked ? 'This copy of the menu isn\u2019t set up yet' : 'Menu unavailable';
+    d.appendChild(b);
+    d.appendChild(document.createTextNode(unlinked
+      ? 'This is the template file. In the GitHub repository, open embed.html (the updater creates it on every run) and paste that into Google Sites instead.'
+      : "Couldn't load the menu right now. It refreshes automatically each day."));
+    const r=document.createElement('button');r.className='retry';r.textContent='Try again';
+    r.addEventListener('click',load);d.appendChild(document.createElement('br'));d.appendChild(r);
+    return d;
+  }
+
+  // ---------- Controls ----------
+  $('vWeek').addEventListener('click',()=>{
+    if(mode!=='week'){
+      mode='week';
+      const now=new Date();
+      if(anchor.getFullYear()===now.getFullYear()&&anchor.getMonth()===now.getMonth()){
+        anchor=schoolWeekMonday(now);
+      }else{
+        let d=new Date(anchor);                       // 1st of the shown month
+        while(d.getDay()===0||d.getDay()===6) d=addDays(d,1);
+        anchor=mondayOf(d);
+      }
+    }
+    render();
+  });
+  $('vMonth').addEventListener('click',()=>{
+    if(mode!=='month'){
+      mode='month';
+      // A week straddling two months belongs to the month its Wednesday is in.
+      const mid=addDays(anchor,2);
+      anchor=new Date(mid.getFullYear(),mid.getMonth(),1);
+    }
+    render();
+  });
+  $('prev').addEventListener('click',()=>{
+    anchor = mode==='week' ? addDays(anchor,-7) : new Date(anchor.getFullYear(),anchor.getMonth()-1,1);
+    render();
+  });
+  $('next').addEventListener('click',()=>{
+    anchor = mode==='week' ? addDays(anchor,7) : new Date(anchor.getFullYear(),anchor.getMonth()+1,1);
+    render();
+  });
+  $('tdy').addEventListener('click',()=>{
+    const w=schoolWeekMonday(new Date());
+    anchor = mode==='week' ? w : new Date(w.getFullYear(),w.getMonth(),1);
+    render();
+  });
+
+  // ---------- Load ----------
+  function fmtWhen(iso){try{return new Date(iso).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});}catch(e){return null;}}
+
+  function adopt(p){
+    DATA=p;
+    school=Object.keys(DATA.schools||{})[0]||null;
+    const ms=allMeals(); if(!ms.includes(meal)) meal=ms[0]||null;
+    anchor=schoolWeekMonday(new Date());
+    // If the coming week has nothing posted, jump to the nearest week that does.
+    const has=w=>{for(let i=0;i<5;i++) if(itemsFor(key(addDays(w,i))).length) return true; return false;};
+    if(!has(anchor)){
+      const ks=Object.keys(schoolDays()).filter(k=>itemsFor(k).length).sort();
+      const nk=ks.find(k=>k>=TODAY)||ks[ks.length-1];
+      if(nk) anchor=mondayOf(fromKey(nk));
+    }
+    render();
+  }
+
+  async function load(){
+    statusEl.textContent='Loading…';
+    try{
+      const res=await fetch(MENU_URL,{cache:'no-store'});
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      const data=await res.json();
+      if(!data||!data.schools||!Object.keys(data.schools).length) throw new Error('no menu data');
+      const w=fmtWhen(data.generated_at);
+      statusEl.textContent=w?`Updated ${w}`:'Live menu';
+      adopt(data);
+    }catch(err){
+      console.warn('Live menu unavailable, using saved copy:',err);
+      const n=FALLBACK.schools&&Object.keys(FALLBACK.schools).length;
+      statusEl.textContent=n?'Saved menu':'Menu unavailable';
+      statusEl.title='Could not load live menu ('+((err&&err.message)||err)+').';
+      adopt(FALLBACK);
+    }
+  }
+  load();
+});
+</script>
+</body>
+</html>
