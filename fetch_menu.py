@@ -148,31 +148,76 @@ def iter_dicts(node):
             yield from iter_dicts(v)
 
 
-def collect_items(node):
-    """Food items found anywhere under this node. An item is any dict with a
-    usable name that isn't obviously a container."""
+# Nutrition facts and allergen entries are shaped just like food items --
+# they're objects with a "name" -- so they have to be excluded deliberately
+# or the menu fills up with "Calcium (mg)", "Wheat", "No Known Allergens".
+
+# 1. Never descend into a branch whose key says it holds nutrition/allergens.
+SKIP_BRANCH_RE = re.compile(r'nutrient|nutrition|allergen|vitamin|mineral', re.IGNORECASE)
+
+# 2. Reject names that are obviously a measurement or an allergen label.
+NUTRIENT_NAME_RE = re.compile(
+    r'^\s*(calories|calorie|protein|sodium|sugars?|fiber|fibre|cholesterol|'
+    r'potassium|calcium|iron|carbohydrates?|total\s+carbs?|total\s+fat|'
+    r'sat\.?\s*fat|saturated\s+fat|trans\s*fat|vitamin\s+\w+|serving\s+size)'
+    r'\b|\((?:mg|g|iu|mcg|kcal)\)\s*$', re.IGNORECASE)
+
+ALLERGEN_NAME_RE = re.compile(
+    r'^\s*(no known allergens|contains|may contain|wheat|soy|soybeans?|milk|egg|eggs|'
+    r'peanuts?|tree\s*nuts?|fish|shellfish|sesame|gluten|dairy)\s*$', re.IGNORECASE)
+
+
+def looks_like_food(name, itype):
+    """Filter out nutrition/allergen rows that share the food-item shape."""
+    if NUTRIENT_NAME_RE.search(name):
+        return False
+    # "Milk" and "Egg" are real allergen labels but also real menu items --
+    # so only reject them when they arrive with no food category attached.
+    if not itype and ALLERGEN_NAME_RE.match(name):
+        return False
+    if itype.lower() in SKIP_TYPES:
+        return False
+    return True
+
+
+def collect_items(node, _key_path=""):
+    """Food items under this node, skipping nutrition and allergen branches."""
     out = []
-    for d in iter_dicts(node):
-        name = first_key(d, NAME_KEYS)
-        if not isinstance(name, str):
-            continue
-        name = name.strip()
-        if not name or len(name) > 120:
-            continue
-        itype = first_key(d, TYPE_KEYS)
-        itype = itype.strip() if isinstance(itype, str) else ""
-        # A dict that merely *contains* menu data (a line or block) also has
-        # a "name"; skip those by requiring it not to hold nested lists.
-        if any(isinstance(v, (list, dict)) and v for k, v in d.items()
-               if k.lower() not in ("nutrients", "nutrition", "allergens")):
-            continue
-        if itype.lower() in SKIP_TYPES:
-            continue
-        out.append({"name": name, "type": itype})
-    # de-duplicate, preserving order
+
+    def walk(n, key_name=""):
+        if SKIP_BRANCH_RE.search(key_name or ""):
+            return                          # don't descend at all
+        if isinstance(n, dict):
+            name = first_key(n, NAME_KEYS)
+            itype = first_key(n, TYPE_KEYS)
+            itype = itype.strip() if isinstance(itype, str) else ""
+            if isinstance(name, str):
+                nm = name.strip()
+                # A container (a line or block) also has a name; a real item
+                # is a leaf -- it holds no further non-nutrition collections.
+                has_children = any(
+                    isinstance(v, (list, dict)) and v
+                    for k, v in n.items() if not SKIP_BRANCH_RE.search(k))
+                if nm and len(nm) <= 120 and not has_children \
+                        and looks_like_food(nm, itype):
+                    out.append({"name": nm, "type": itype})
+            for k, v in n.items():
+                walk(v, k)
+        elif isinstance(n, list):
+            for v in n:
+                walk(v, key_name)
+
+    walk(node, _key_path)
+
+    # If anything arrived with a real category, trust those and drop the
+    # untyped leftovers -- stray metadata almost never carries a type.
+    typed = [it for it in out if it["type"]]
+    if typed:
+        out = typed
+
     seen, uniq = set(), []
     for it in out:
-        k = (it["name"].lower(), it["type"].lower())
+        k = it["name"].lower()
         if k in seen:
             continue
         seen.add(k)
