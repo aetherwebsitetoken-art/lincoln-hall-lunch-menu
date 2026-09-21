@@ -52,7 +52,7 @@ SCHOOL_KEYS = ["LincolnwoodSchoolDistrict74"]
 API = "https://api.mealviewer.com/api/v4/school/{key}/{start}/{end}/"
 
 DAYS_BEHIND = 7      # keep a little history so "today" always has context
-DAYS_AHEAD = 60      # far enough to cover next month's posted menu
+DAYS_AHEAD = 70      # far enough to cover all of next month
 
 # Meal periods to keep, in display order. Add "Breakfast" if wanted.
 MEALS = ["Lunch", "Breakfast"]
@@ -309,6 +309,75 @@ def extract_days(payload):
     return days
 
 
+# --- Picking each day's real lunch ------------------------------------------
+#
+# Most menus include the same fallback choices every day ("Bagel Option",
+# "Chef Salad Option"). They're categorised as entrees and would otherwise
+# headline every single day. The day's actual lunch is the entree that
+# CHANGES from day to day, so alternates are identified two ways:
+#   - the word "option"/"alternate" in the name, and
+#   - appearing on most of the days in the data.
+ALT_NAME_RE = re.compile(r'\b(option|alternate|alt\.?|grab\s*(?:&|and)\s*go|daily)\b',
+                         re.IGNORECASE)
+RECURRING_SHARE = 0.6        # on >= 60% of days counts as a daily staple
+MIN_DAYS_FOR_RECURRENCE = 3  # need a few days before recurrence means anything
+
+
+def _norm(name):
+    return re.sub(r'[^a-z0-9]+', '', name.lower())
+
+
+def mark_featured(days):
+    """Flag each day's headline item and its daily alternates, and reorder so
+    the headline comes first and alternates last."""
+    for meal in {m for d in days.values() for m in d}:
+        meal_days = [d[meal] for d in days.values() if d.get(meal)]
+        counts = {}
+        for items in meal_days:
+            for n in {_norm(i["name"]) for i in items}:
+                counts[n] = counts.get(n, 0) + 1
+        n_days = len(meal_days)
+
+        side_rank = type_rank("Side")
+
+        def is_alt(item):
+            if ALT_NAME_RE.search(item["name"]):
+                return True
+            # Recurrence only marks an *entree* as a daily alternate. Fruit,
+            # milk and sides legitimately show up most days -- that's just
+            # a normal side, not an alternative lunch.
+            if type_rank(item["type"]) >= side_rank:
+                return False
+            if n_days >= MIN_DAYS_FOR_RECURRENCE:
+                return counts.get(_norm(item["name"]), 0) / n_days >= RECURRING_SHARE
+            return False
+
+        for day in days.values():
+            items = day.get(meal)
+            if not items:
+                continue
+            side_rank = type_rank("Side")
+            for it in items:
+                it["alt"] = is_alt(it)
+                it.pop("featured", None)
+
+            entrees = [i for i in items if type_rank(i["type"]) < side_rank]
+            # Priority: a real (non-alternate) entree, then any entree --
+            # even an "option" beats headlining a piece of fruit -- then
+            # anything non-alternate, then whatever's there.
+            pool = [i for i in entrees if not i["alt"]] \
+                or entrees \
+                or [i for i in items if not i["alt"]] \
+                or items
+            pool[0]["featured"] = True
+
+            head = [i for i in items if i.get("featured")]
+            rest = [i for i in items if not i.get("featured") and not i["alt"]]
+            alts = [i for i in items if not i.get("featured") and i["alt"]]
+            day[meal] = head + rest + alts
+    return days
+
+
 def school_name(payload):
     for key in ("schoolName", "name", "physicalLocationName"):
         for d in iter_dicts(payload):
@@ -364,8 +433,11 @@ def update_index(menu_payload):
 # --- Main ------------------------------------------------------------------
 
 def main():
-    start = date.today() - timedelta(days=DAYS_BEHIND)
-    end = date.today() + timedelta(days=DAYS_AHEAD)
+    today = date.today()
+    # Start at whichever is earlier: a week back, or the 1st of this month,
+    # so the month view always has the full current month.
+    start = min(today - timedelta(days=DAYS_BEHIND), today.replace(day=1))
+    end = today + timedelta(days=DAYS_AHEAD)
     fmt = "%m-%d-%Y"
     print(f"Window: {start.isoformat()} .. {end.isoformat()}")
 
@@ -385,7 +457,7 @@ def main():
             raw_for_dump = payload
 
         name = school_name(payload) or key
-        days = extract_days(payload)
+        days = mark_featured(extract_days(payload))
         meals = sorted({m for d in days.values() for m in d})
         total = sum(len(items) for d in days.values() for items in d.values())
         print(f"  school: {name}")
