@@ -1,0 +1,54 @@
+name: Update lunch menu
+
+on:
+  schedule:
+    # 10:00 and 22:00 UTC (roughly 5am and 5pm Central). Menus change far
+    # less often than game scores, so twice a day is plenty.
+    - cron: "0 10,22 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch menu
+        run: python3 fetch_menu.py
+
+      - name: Commit updated menu (if it changed)
+        id: commit
+        run: |
+          git config user.name "menu-bot"
+          git config user.email "menu-bot@users.noreply.github.com"
+          # index.html is included because the fetcher refreshes the page's
+          # offline copy and its live-data URL on every run.
+          git add menu.json index.html
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes"
+          else
+            git commit -m "Auto-update lunch menu"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Refresh jsDelivr CDN cache
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          REPO="${GITHUB_REPOSITORY}"
+          curl -s "https://purge.jsdelivr.net/gh/${REPO}@main/menu.json" || true
+          curl -s "https://purge.jsdelivr.net/gh/${REPO}@main/index.html" || true
