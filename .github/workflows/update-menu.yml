@@ -38,9 +38,10 @@ jobs:
         run: |
           git config user.name "menu-bot"
           git config user.email "menu-bot@users.noreply.github.com"
-          # index.html is included because the fetcher refreshes the page's
-          # offline copy and its live-data URL on every run.
-          git add menu.json index.html
+          # embed.html is the paste-ready page for Google Sites. The fetcher
+          # builds it from the index.html template on every run; index.html
+          # itself is never modified by the bot.
+          git add menu.json embed.html
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No changes"
@@ -55,4 +56,4 @@ jobs:
         run: |
           REPO="${GITHUB_REPOSITORY}"
           curl -s "https://purge.jsdelivr.net/gh/${REPO}@main/menu.json" || true
-          curl -s "https://purge.jsdelivr.net/gh/${REPO}@main/index.html" || true
+          curl -s "https://purge.jsdelivr.net/gh/${REPO}@main/embed.html" || true
