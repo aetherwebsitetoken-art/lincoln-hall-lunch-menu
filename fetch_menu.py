@@ -225,10 +225,23 @@ def collect_items(node, _key_path=""):
     return uniq
 
 
+def type_rank(itype):
+    """Position of a food category in TYPE_ORDER, matching loosely so
+    variants like "Main Dish" or "Entrees" rank with "Entree"."""
+    t = (itype or "").strip().lower()
+    if not t:
+        return len(TYPE_ORDER)
+    for i, known in enumerate(TYPE_ORDER):
+        k = known.lower()
+        if t == k or t.startswith(k) or k.startswith(t):
+            return i
+    if re.search(r'entr|main|hot\s*food|featured', t):
+        return 0          # any other way of saying "entree" still leads
+    return len(TYPE_ORDER)
+
+
 def sort_items(items):
-    order = {t.lower(): i for i, t in enumerate(TYPE_ORDER)}
-    return sorted(items, key=lambda it: (order.get(it["type"].lower(), len(order)),
-                                         it["name"].lower()))
+    return sorted(items, key=lambda it: (type_rank(it["type"]), it["name"].lower()))
 
 
 def extract_days(payload):
