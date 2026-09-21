@@ -71,7 +71,12 @@ TIMEOUT = 25
 ATTEMPTS = 3
 RETRY_WAIT = 2
 
-INDEX_FILE = "index.html"
+# index.html is the TEMPLATE (what gets updated when the design changes).
+# embed.html is what goes into Google Sites. Only this script ever writes
+# embed.html, so the copy that gets pasted is always filled in -- a new
+# template being uploaded can never leave Google Sites with a blank page.
+TEMPLATE_FILE = "index.html"
+EMBED_FILE = "embed.html"
 URL_REGION_RE = re.compile(r'(/\*URL_START\*/).*?(/\*URL_END\*/)', re.DOTALL)
 FALLBACK_REGION_RE = re.compile(r'(/\*FALLBACK_START\*/).*?(/\*FALLBACK_END\*/)', re.DOTALL)
 
@@ -401,33 +406,37 @@ def dump_structure(payload, limit=60):
 
 # --- Keeping index.html in sync -------------------------------------------
 
-def update_index(menu_payload):
-    if not os.path.exists(INDEX_FILE):
-        print(f"(no {INDEX_FILE} beside the script -- skipping page sync)")
+def build_embed(menu_payload):
+    """Write embed.html: the template with the live-data link and a saved copy
+    of the menu filled in. The template itself is never modified."""
+    if not os.path.exists(TEMPLATE_FILE):
+        print(f"(no {TEMPLATE_FILE} beside the script -- can't build {EMBED_FILE})")
         return
-    html = open(INDEX_FILE, encoding="utf-8").read()
-    before, notes = html, []
+    html = open(TEMPLATE_FILE, encoding="utf-8").read()
+    notes = []
 
     repo = os.environ.get("GITHUB_REPOSITORY", "").strip()
     if repo and URL_REGION_RE.search(html):
         url = f"https://cdn.jsdelivr.net/gh/{repo}@main/menu.json"
         html = URL_REGION_RE.sub(lambda m: f"{m.group(1)}'{url}'{m.group(2)}", html, count=1)
-        notes.append(f"data URL -> {url}")
+        notes.append(f"live link -> {url}")
     elif not repo:
-        notes.append("data URL left alone (not running in GitHub Actions)")
+        notes.append("live link left as-is (not running in GitHub Actions)")
 
     if FALLBACK_REGION_RE.search(html):
         payload = json.dumps(menu_payload, indent=2, sort_keys=True).replace("</", "<\\/")
         html = FALLBACK_REGION_RE.sub(lambda m: f"{m.group(1)}{payload}{m.group(2)}", html, count=1)
-        notes.append("offline copy refreshed")
+        n = sum(len(d) for d in (menu_payload.get("schools") or {}).values())
+        notes.append(f"saved copy -> {n} day(s)")
     else:
-        notes.append("WARNING: no FALLBACK markers found in index.html")
+        notes.append(f"WARNING: no saved-copy markers found in {TEMPLATE_FILE}")
 
+    before = open(EMBED_FILE, encoding="utf-8").read() if os.path.exists(EMBED_FILE) else None
     if html != before:
-        open(INDEX_FILE, "w", encoding="utf-8").write(html)
-        print("Updated index.html: " + "; ".join(notes))
+        open(EMBED_FILE, "w", encoding="utf-8").write(html)
+        print(f"Wrote {EMBED_FILE}: " + "; ".join(notes))
     else:
-        print("index.html unchanged: " + "; ".join(notes))
+        print(f"{EMBED_FILE} unchanged: " + "; ".join(notes))
 
 
 # --- Main ------------------------------------------------------------------
@@ -474,13 +483,12 @@ def main():
             dump_structure(raw_for_dump)
         if os.path.exists("menu.json"):
             print("Keeping the existing menu.json rather than emptying it.", file=sys.stderr)
-            # Still fill in index.html from the last good menu. Otherwise a
-            # freshly uploaded page (blank saved copy, no live-data link)
-            # would stay blank until a fetch next succeeds.
+            # Still rebuild embed.html from the last good menu, so a fetch
+            # failure never leaves Google Sites without a working page.
             try:
-                update_index(json.load(open("menu.json")))
+                build_embed(json.load(open("menu.json")))
             except Exception as e:
-                print(f"Could not refresh index.html from menu.json: {e}", file=sys.stderr)
+                print(f"Could not build {EMBED_FILE} from menu.json: {e}", file=sys.stderr)
             sys.exit(1)
 
     payload = {
@@ -498,7 +506,7 @@ def main():
     if failures:
         print(f"WARNING: {len(failures)} school key(s) failed: {failures}", file=sys.stderr)
 
-    update_index(payload)
+    build_embed(payload)
 
 
 if __name__ == "__main__":
