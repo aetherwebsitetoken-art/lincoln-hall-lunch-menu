@@ -19,6 +19,13 @@
   html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:var(--seam);
     color:var(--ink);font-family:var(--body);-webkit-text-size-adjust:100%}
   button{font-family:inherit}
+  button,.cell,.day{-webkit-tap-highlight-color:transparent}
+  @media (hover:hover){
+    .day:hover{box-shadow:0 10px 24px rgba(0,0,0,.08);transform:translateY(-2px)}
+    .cell:not(.out):hover{box-shadow:0 8px 18px rgba(0,0,0,.08);transform:translateY(-2px);border-color:var(--faint)}
+    .tog:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  }
+  .cell:not(.out):active{background:#fafafa}
   ::-webkit-scrollbar{width:8px}
   ::-webkit-scrollbar-track{background:var(--seam)}
   ::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
@@ -53,11 +60,12 @@
     justify-content:center;transition:background .15s,transform .15s}
   .nav .arw:hover{background:var(--red)}
   .nav .arw:active{transform:scale(.88)}
-  .nav .lbl{min-width:132px;text-align:center;font-size:13px;font-weight:600;white-space:nowrap}
+  .nav .lbl{min-width:132px;text-align:center;white-space:nowrap;display:flex;flex-direction:column;line-height:1.2}
+  .nav .lbl b{font-size:13.5px;font-weight:700}
   .nav .tdy{border:none;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;border-radius:999px;
     padding:7px 13px;font-size:12px;font-weight:600;white-space:nowrap;transition:background .15s}
   .nav .tdy:hover{background:var(--red)}
-  .status{font-size:10px;color:#8e9099;margin:0;width:100%;text-align:right}
+  .status{font-size:10px;color:#8e9099;font-weight:500}
 
   /* ---------- Headline banner ---------- */
   .hero{flex-shrink:0;background:var(--paper);border-bottom:1px solid var(--line)}
@@ -73,6 +81,19 @@
   .tag{font-size:12px;background:var(--seam);border:1px solid var(--line);color:var(--soft);
     padding:3px 10px;border-radius:999px}
   .hero .opts{font-size:11.5px;color:var(--faint);margin-top:8px}
+  .hero-in{position:relative}
+  .tog{position:absolute;right:16px;top:12px;border:1px solid var(--line);background:var(--paper);
+    color:var(--soft);font-size:12px;font-weight:600;padding:6px 11px;border-radius:999px;cursor:pointer;
+    display:flex;align-items:center;gap:5px;transition:background .15s,color .15s,border-color .15s}
+  .tog .chev{display:inline-block;transition:transform .25s var(--ease)}
+  .hero.closed .tog .chev{transform:rotate(180deg)}
+  .hero .txt{padding-right:84px}
+  .hero.closed .hero-in{padding:9px 18px}
+  .hero.closed .plate,.hero.closed .tags,.hero.closed .opts{display:none}
+  .hero.closed .txt{display:flex;align-items:baseline;gap:10px;min-width:0}
+  .hero.closed .when{flex-shrink:0}
+  .hero.closed .dish{font-size:15px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .hero.closed .tog{top:50%;transform:translateY(-50%)}
 
   main{flex:1;min-height:0;overflow-y:auto}
   .wrap{max-width:1200px;margin:0 auto;padding:18px 18px 44px}
@@ -82,7 +103,6 @@
   .day{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;
     display:flex;flex-direction:column;opacity:0;animation:rise .3s var(--ease) forwards;
     transition:box-shadow .2s,transform .2s}
-  .day:hover{box-shadow:0 10px 24px rgba(0,0,0,.08);transform:translateY(-2px)}
   .day.today{border-color:var(--red);box-shadow:0 0 0 2px rgba(216,19,36,.16)}
   .day.off{background:var(--seam2)}
   .day h2{margin:0;padding:11px 13px 10px;display:flex;justify-content:space-between;align-items:baseline;
@@ -101,7 +121,7 @@
   .sides span::before{content:'';position:absolute;left:0;top:.55em;width:4px;height:4px;border-radius:50%;
     background:var(--red)}
   .alts{margin-top:auto;background:var(--seam);border-radius:9px;padding:8px 10px}
-  .alts span{display:block;font-size:12px;color:var(--soft);line-height:1.4}
+  .alts > span{display:block;font-size:12px;color:var(--soft);line-height:1.4}
   .off-note{font-size:13px;color:var(--faint)}
 
   .code{display:inline-block;font-size:9px;font-weight:700;color:var(--faint);border:1px solid var(--line);
@@ -111,19 +131,34 @@
   .mhead{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:6px}
   .mhead div{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--soft);
     text-align:center}
-  .month{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+  .month{--mf:13px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
   .cell{background:var(--paper);border:1px solid var(--line);border-radius:11px;min-height:96px;padding:9px 10px;
     display:flex;flex-direction:column;gap:5px;cursor:pointer;opacity:0;animation:rise .28s var(--ease) forwards;
     transition:box-shadow .15s,transform .15s,border-color .15s}
-  .cell:hover{box-shadow:0 8px 18px rgba(0,0,0,.08);transform:translateY(-2px);border-color:var(--faint)}
   .cell.out{background:transparent;border-style:dashed;cursor:default;opacity:.55}
-  .cell.out:hover{box-shadow:none;transform:none;border-color:var(--line)}
   .cell.empty{background:var(--seam2)}
   .cell.today{border-color:var(--red);box-shadow:0 0 0 2px rgba(216,19,36,.16)}
-  .cell .n{font-size:12px;font-weight:700;color:var(--soft)}
+  .cell .n{font-size:calc(var(--mf)*.9);font-weight:700;color:var(--soft)}
   .cell.today .n{color:var(--red)}
-  .cell .f{font-size:13px;font-weight:700;line-height:1.25}
-  .cell .s{font-size:11px;color:var(--faint);line-height:1.3;margin-top:auto}
+  .cell .f{font-size:var(--mf);font-weight:700;line-height:1.22}
+  .cell .s{font-size:calc(var(--mf)*.8);color:var(--faint);line-height:1.3;margin-top:auto}
+  .month.compact .s{display:none}
+  .month.breakwords .f,.month.breakwords .s{overflow-wrap:anywhere;hyphens:auto}
+
+  /* Month "fit" mode: the whole month fills the visible area with no
+     scrolling, so it can be captured in a single screenshot. */
+  main.fit{overflow:hidden}
+  main.fit .wrap{height:100%;display:flex;flex-direction:column;padding-bottom:12px}
+  main.fit #view{flex:1;min-height:0;display:flex;flex-direction:column}
+  main.fit .month{flex:1;min-height:0;grid-auto-rows:minmax(0,1fr)}
+  main.fit .cell{min-height:0;overflow:hidden;padding:calc(var(--mf)*.55) calc(var(--mf)*.62);
+    gap:calc(var(--mf)*.3)}
+  main.fit .note{display:none}
+  /* Screens too short for any readable fit (e.g. a phone held sideways)
+     fall back to normal scrolling. */
+  main.fit.nofit{overflow-y:auto}
+  main.fit.nofit .wrap{height:auto}
+  main.fit.nofit .month{grid-auto-rows:auto}
 
   .empty-state{padding:60px 20px;text-align:center;color:var(--soft);font-size:14px;line-height:1.6}
   .empty-state b{display:block;color:var(--ink);font-size:16px;margin-bottom:8px}
@@ -134,21 +169,39 @@
 
   @media (max-width:900px){ .week{grid-template-columns:repeat(2,minmax(0,1fr))} }
   @media (max-width:640px){
-    .bar-in{padding:9px 12px;gap:9px}
+    .bar-in{padding:8px 12px;gap:8px 10px}
     .brand p{display:none}
-    .ctrls{width:100%;margin-left:0;justify-content:space-between}
-    .nav .lbl{min-width:0}
-    .status{text-align:left}
+    .brand h1{font-size:17px}
+    .mark{width:32px;height:32px}
+    .ctrls{display:contents}
+    .ctrls > .seg:not(#meals){order:2;margin-left:auto}
+    #meals{order:4}
+    .nav{order:3;width:100%}
+    .nav .lbl{min-width:0;flex:1}
+    .nav .arw{width:40px;height:40px;font-size:20px}
+    .nav .tdy{padding:9px 13px}
+    .seg button{padding:7px 12px}
     .hero-in{padding:12px;gap:12px}
-    .plate{width:48px;height:48px;font-size:24px}
-    .hero .dish{font-size:22px}
+    .plate{width:44px;height:44px;font-size:22px}
+    .hero .dish{font-size:21px}
+    .hero .txt{padding-right:70px}
+    .tog{right:10px;top:10px;padding:6px 9px}
+    .hero.closed .hero-in{padding:8px 12px}
+    .hero.closed .dish{font-size:14px}
     .week{grid-template-columns:1fr}
-    .wrap{padding:12px 12px 36px}
+    .wrap{padding:10px 10px 30px}
     .month,.mhead{gap:4px}
-    .cell{min-height:70px;padding:6px}
-    .cell .f{font-size:11px}
-    .cell .s{display:none}
-    .day:hover,.cell:hover{transform:none;box-shadow:none}
+    .mhead div{font-size:10px}
+    .cell{min-height:64px;padding:5px;border-radius:8px}
+  }
+  /* Short screens (phones held sideways): trim the header and banner. */
+  @media (max-height:500px) and (orientation:landscape){
+    .bar-in{padding:6px 16px}
+    .brand p{display:none}
+    .mark{width:30px;height:30px}
+    .hero-in{padding:8px 16px}
+    .plate{width:40px;height:40px;font-size:20px}
+    .hero .dish{font-size:19px;margin:1px 0 4px}
   }
   @media (prefers-reduced-motion:reduce){
     *{animation-duration:.001ms!important;transition-duration:.001ms!important}
@@ -172,18 +225,17 @@
         </div>
         <div class="nav">
           <button class="arw" id="prev" aria-label="Previous">‹</button>
-          <span class="lbl" id="lbl">Loading…</span>
+          <span class="lbl"><b id="lbl">Loading…</b><small class="status" id="status">&nbsp;</small></span>
           <button class="arw" id="next" aria-label="Next">›</button>
           <button class="tdy" id="tdy">Today</button>
         </div>
       </div>
-      <p class="status" id="status">&nbsp;</p>
     </div>
   </header>
 
   <section class="hero" id="hero"></section>
 
-  <main><div class="wrap">
+  <main id="main"><div class="wrap">
     <div id="view"></div>
     <p class="note" id="note"></p>
   </div></main>
@@ -198,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // on every run, with the two lines below filled in.
   const MENU_URL = /*URL_START*/'https://cdn.jsdelivr.net/gh/aetherwebsitetoken-art/lincoln-hall-lunch-menu@main/menu.json'/*URL_END*/;
   const FALLBACK = /*FALLBACK_START*/{
-  "generated_at": "2026-09-22T00:40:32.981381+00:00",
+  "generated_at": "2026-09-22T04:12:31.043031+00:00",
   "schools": {
     "Lincoln Hall": {
       "2026-09-01": {
@@ -1536,10 +1588,10 @@ document.addEventListener('DOMContentLoaded', () => {
   "source": "MealViewer (api.mealviewer.com)"
 }/*FALLBACK_END*/;
 
-  let DATA={}, school=null, meal=null, mode='week', anchor=null;
+  let DATA={}, school=null, meal=null, mode='week', anchor=null, heroOpen=true;
 
   const $=id=>document.getElementById(id);
-  const viewEl=$('view'), hero=$('hero'), lbl=$('lbl'), statusEl=$('status'),
+  const mainEl=$('main'), viewEl=$('view'), hero=$('hero'), lbl=$('lbl'), statusEl=$('status'),
         mealsEl=$('meals'), noteEl=$('note');
 
   // ---------- Dates ----------
@@ -1651,7 +1703,21 @@ document.addEventListener('DOMContentLoaded', () => {
       o.textContent='Also available: '+alts.map(a=>plainName(a.name).replace(/\s+Option$/i,'')).join(' · ');
       txt.appendChild(o);
     }
-    inn.append(plate,txt); hero.appendChild(inn);
+    const tog=document.createElement('button'); tog.className='tog';
+    tog.setAttribute('aria-expanded',String(heroOpen));
+    tog.setAttribute('aria-controls','hero');
+    const lab=document.createElement('span'); lab.textContent=heroOpen?'Hide':'Show';
+    const chev=document.createElement('span'); chev.className='chev'; chev.textContent='▴';
+    tog.append(lab,chev);
+    tog.addEventListener('click',()=>{
+      heroOpen=!heroOpen;
+      hero.classList.toggle('closed',!heroOpen);
+      lab.textContent=heroOpen?'Hide':'Show';
+      tog.setAttribute('aria-expanded',String(heroOpen));
+      if(mode==='month') requestAnimationFrame(fitMonth);   // more room -> bigger text
+    });
+    inn.append(plate,txt,tog); hero.appendChild(inn);
+    hero.classList.toggle('closed',!heroOpen);
   }
 
   // ---------- Week view ----------
@@ -1730,7 +1796,7 @@ document.addEventListener('DOMContentLoaded', () => {
           c.appendChild(f);
           if(sides.length){
             const s=document.createElement('div');s.className='s';
-            s.textContent=sides.slice(0,2).map(x=>plainName(x.name)).join(', ')+(sides.length>2?` +${sides.length-2}`:'');
+            s.textContent=sides.map(x=>plainName(x.name)).join(', ');
             c.appendChild(s);
           }
         }
@@ -1742,7 +1808,42 @@ document.addEventListener('DOMContentLoaded', () => {
     viewEl.innerHTML=''; viewEl.append(head,grid);
     noteEl.textContent=shown?'Tap any day to see its full menu. Menus can change due to product availability.'
                             :'No menu posted for this month yet.';
+    requestAnimationFrame(fitMonth);
   }
+
+  // Size the month so the whole thing is visible at once, every lunch name
+  // in full. Largest text that fits wins; if even the smallest readable size
+  // doesn't fit, sides are dropped (lunch names are kept); if it still
+  // doesn't fit (e.g. a phone held sideways), the month scrolls instead.
+  function fitMonth(){
+    const m=viewEl.querySelector('.month');
+    if(mode!=='month'||!m||!m.getBoundingClientRect) return;
+    mainEl.classList.add('fit'); mainEl.classList.remove('nofit');
+    m.classList.remove('compact','breakwords');
+    const cells=[...m.querySelectorAll('.cell')];
+    const texts=[...m.querySelectorAll('.f,.s')];
+    const overflowing=()=>cells.some(c=>c.scrollHeight>c.clientHeight+1)
+                        || texts.some(t=>t.offsetParent && t.scrollWidth>t.clientWidth+1);
+    const small=window.innerWidth<641;
+    const maxF=small?12:15, minF=small?8.5:10;
+    const attempt=()=>{
+      for(let f=maxF; f>=minF; f-=0.5){
+        m.style.setProperty('--mf',f+'px');
+        if(!overflowing()) return true;
+      }
+      return false;
+    };
+    if(attempt()) return;
+    m.classList.add('compact');           // 1st fallback: drop sides, keep lunches
+    if(attempt()) return;
+    m.classList.add('breakwords');        // 2nd: allow breaking very long words
+    if(attempt()) return;
+    mainEl.classList.add('nofit');        // last: let the month scroll
+    m.classList.remove('compact','breakwords');
+    m.style.setProperty('--mf',(small?11:13)+'px');
+  }
+  let fitTimer=null;
+  window.addEventListener('resize',()=>{ clearTimeout(fitTimer); fitTimer=setTimeout(fitMonth,120); });
 
   // ---------- Render ----------
   function render(){
@@ -1758,7 +1859,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     renderHero();
-    mode==='week'?renderWeek():renderMonth();
+    if(mode==='week'){ mainEl.classList.remove('fit','nofit'); renderWeek(); }
+    else renderMonth();
   }
 
   function emptyState(){
