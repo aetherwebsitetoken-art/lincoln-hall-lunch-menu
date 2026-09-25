@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>SD74 Lunch — This week</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --font:'Lexend',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --bg:#1c1c1f; --panel:#25252a; --panel-2:#2e2e34; --line:#3b3b42;
+    --red:#d42a3c; --red-dark:#9c1426; --ink:#f5f5f3; --muted:#a8a8b1;
+    --ease:cubic-bezier(.22,.8,.26,1);
+  }
+  /* No page background: only the rounded card shows inside the embed box. */
+  html,body{margin:0;height:100%;overflow:hidden;background:transparent;color:var(--ink);
+    font-family:var(--font);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+  button{font-family:inherit;color:inherit;-webkit-tap-highlight-color:transparent}
+  button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+  /* Scaled by JS to fit the embed box exactly, so it never scrolls. */
+  #fit{position:absolute;top:0;left:0;transform-origin:top left}
+  .wrap{max-width:1040px;margin:0 auto;padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+
+  .shell{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    animation:cardIn .45s var(--ease) both}
+  @keyframes cardIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @keyframes pop{0%{opacity:0;transform:translateY(9px) scale(.97)}
+                 60%{opacity:1;transform:translateY(-2px) scale(1.004)}100%{opacity:1;transform:none}}
+  @keyframes inR{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:none}}
+  @keyframes inL{from{opacity:0;transform:translateX(-22px)}to{opacity:1;transform:none}}
+
+  .hd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--panel-2);
+    border-bottom:1px solid var(--line);border-top:4px solid var(--red);padding:9px 12px}
+  .mark{width:30px;height:30px;border-radius:6px;flex-shrink:0;border:1px solid var(--line);
+    background:repeating-linear-gradient(135deg,var(--red) 0 6px,var(--panel) 6px 12px)}
+  .hd h1{margin:0;font-size:16px;font-weight:800;letter-spacing:-.4px;line-height:1.1}
+  .hd h1 span{color:var(--red)}
+  .hd .sub{margin:2px 0 0;font-size:10.5px;color:var(--muted);font-weight:600}
+  .nav{display:flex;align-items:center;gap:7px;margin-left:auto}
+  .nav button{border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;
+    border-radius:6px;box-shadow:0 3px 0 var(--bg);font-weight:700;
+    transition:background .15s,transform .08s linear,box-shadow .08s linear}
+  .nav button:active{transform:translateY(2px);box-shadow:0 1px 0 var(--bg)}
+  .nav .arw{width:30px;height:30px;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center}
+  .nav .tdy{padding:7px 11px;font-size:11.5px;color:var(--muted)}
+  .range{font-size:11.5px;font-weight:700;white-space:nowrap;color:var(--muted)}
+
+  .body{padding:10px}
+  .week{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+  .day{background:var(--panel-2);border:1px solid var(--line);border-radius:8px;overflow:hidden;
+    display:flex;flex-direction:column;animation:pop .38s var(--ease) backwards}
+  .day.today{border-color:var(--red);box-shadow:inset 0 0 0 1px var(--red)}
+  .day.off{opacity:.55}
+  .day h2{margin:0;padding:7px 10px;border-bottom:1px solid var(--line);display:flex;
+    justify-content:space-between;align-items:baseline;gap:6px}
+  .day h2 .dow{font-size:12.5px;font-weight:800;letter-spacing:-.2px}
+  .day h2 .dt{font-size:9.5px;font-weight:700;color:var(--muted);letter-spacing:.5px}
+  .day.today h2{background:var(--red);border-bottom-color:var(--red)}
+  .day.today h2 .dow,.day.today h2 .dt{color:var(--ink)}
+  .db{padding:9px 10px 10px;display:flex;flex-direction:column;gap:7px;flex:1}
+  .feat{font-size:13px;font-weight:800;line-height:1.25;letter-spacing:-.2px}
+  .sides{display:flex;flex-direction:column;gap:3px}
+  .sides span{font-size:11px;color:var(--muted);line-height:1.3;padding-left:9px;position:relative}
+  .sides span::before{content:'';position:absolute;left:0;top:.48em;width:4px;height:4px;background:var(--red)}
+  .alts{margin-top:auto;font-size:10px;color:var(--muted);line-height:1.35;padding-top:7px;
+    border-top:1px solid var(--line)}
+  .none{font-size:11px;color:var(--muted)}
+  .foot{margin:0;padding:0 12px 10px;font-size:10px;color:var(--muted);text-align:center}
+  .msg{padding:36px 18px;text-align:center;color:var(--muted);font-size:13px;line-height:1.6}
+  .msg b{display:block;color:var(--ink);font-size:15px;margin-bottom:6px}
+
+  .week.nav-next{animation:inR .32s var(--ease)}
+  .week.nav-prev{animation:inL .32s var(--ease)}
+
+  @media (hover:hover){ .nav button:hover{background:var(--line)} }
+  @media (max-width:640px){
+    .week{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .hd h1{font-size:15px}
+    .range{width:100%;text-align:center}
+  }
+  @media (max-width:420px){ .week{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+</style>
+</head>
+<body>
+<div id="fit"><div class="wrap">
+  <div class="shell">
+    <div class="hd">
+      <div class="mark" aria-hidden="true"></div>
+      <div><h1>SD74 <span>Lunch</span></h1><p class="sub" id="sub">This week</p></div>
+      <div class="nav">
+        <span class="range" id="range"></span>
+        <button class="arw" id="prev" aria-label="Previous week">‹</button>
+        <button class="arw" id="next" aria-label="Next week">›</button>
+        <button class="tdy" id="tdy">This week</button>
+      </div>
+    </div>
+    <div class="body" id="view"></div>
+    <p class="foot" id="foot"></p>
+  </div>
+</div></div>
+
+<script>
+(function(){
+  'use strict';
+  // Filled in automatically by the updater. Paste week-embed.html from the
+  // repository into Google Sites, not this template.
+  const MENU_URL = /*URL_START*/'menu.json'/*URL_END*/;
+  const FALLBACK = /*FALLBACK_START*/{"generated_at":null,"schools":{}}/*FALLBACK_END*/;
+
+  const $=id=>document.getElementById(id);
+  const viewEl=$('view'), fitEl=$('fit');
+  const reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let DATA={}, school=null, meal=null, monday=null;
+
+  const pad=n=>n<10?'0'+n:''+n;
+  const key=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+  const addDays=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x;};
+  const fromKey=k=>{const [y,m,d]=k.split('-').map(Number);return new Date(y,m-1,d);};
+  const fmt=(d,o)=>d.toLocaleDateString('en-US',o);
+  const TODAY=key(new Date());
+  function mondayOf(d){const x=new Date(d);x.setHours(0,0,0,0);x.setDate(x.getDate()-((x.getDay()+6)%7));return x;}
+  // Saturday and Sunday belong to the week ahead.
+  function schoolWeek(now){const m=mondayOf(now),w=now.getDay();return (w===0||w===6)?addDays(m,7):m;}
+
+  const days=()=>(DATA.schools&&DATA.schools[school])||{};
+  const itemsFor=k=>{const d=days()[k];return (d&&d[meal])||[];};
+  function allMeals(){const s=new Set();Object.values(days()).forEach(m=>Object.keys(m).forEach(x=>s.add(x)));
+    return [...s].sort((a,b)=>a==='Lunch'?-1:b==='Lunch'?1:a.localeCompare(b));}
+
+  const ENTREE=/entr[ée]e|main|hot\s*food|featured/i, ALT=/\b(option|alternate)\b/i;
+  function parts(items){
+    if(!items.length) return {feat:null,sides:[],alts:[]};
+    let feat=items.find(i=>i.featured);
+    const isAlt=i=>i.alt!==undefined?i.alt:ALT.test(i.name);
+    if(!feat) feat=items.find(i=>ENTREE.test(i.type||'')&&!isAlt(i))||items.find(i=>!isAlt(i))||items[0];
+    return {feat, sides:items.filter(i=>i!==feat&&!isAlt(i)), alts:items.filter(i=>i!==feat&&isAlt(i))};
+  }
+  const plain=n=>(n||'').replace(/\(\s*[A-Z]{1,3}\s*\)/g,' ').replace(/\s+/g,' ').trim();
+
+  function render(){
+    const mon=monday||schoolWeek(new Date());
+    $('range').textContent=`${fmt(mon,{month:'short',day:'numeric'})} – ${fmt(addDays(mon,4),{month:'short',day:'numeric'})}`;
+    if(!Object.keys(days()).length){
+      viewEl.innerHTML='<div class="msg"><b>Menu unavailable</b>'+
+        (/^https?:/i.test(MENU_URL)?'It refreshes automatically each day.'
+         :'Paste week-embed.html from the repository into Google Sites.')+'</div>';
+      queueFit(); return;
+    }
+    const grid=document.createElement('div'); grid.className='week';
+    let shown=0;
+    for(let i=0;i<5;i++){
+      const d=addDays(mon,i), k=key(d), items=itemsFor(k);
+      if(items.length) shown++;
+      const card=document.createElement('div');
+      card.className='day'+(k===TODAY?' today':'')+(items.length?'':' off');
+      card.style.animationDelay=reduceMotion?'0ms':`${i*55}ms`;
+      const h=document.createElement('h2');
+      const a=document.createElement('span'); a.className='dow'; a.textContent=fmt(d,{weekday:'long'});
+      const b=document.createElement('span'); b.className='dt';
+      b.textContent=k===TODAY?'TODAY':fmt(d,{month:'short',day:'numeric'}).toUpperCase();
+      h.append(a,b); card.appendChild(h);
+      const body=document.createElement('div'); body.className='db';
+      if(!items.length){
+        const n=document.createElement('div'); n.className='none'; n.textContent='No menu posted';
+        body.appendChild(n);
+      }else{
+        const {feat,sides,alts}=parts(items);
+        const f=document.createElement('div'); f.className='feat'; f.textContent=plain(feat.name);
+        body.appendChild(f);
+        if(sides.length){
+          const l=document.createElement('div'); l.className='sides';
+          sides.forEach(x=>{const sp=document.createElement('span');sp.textContent=plain(x.name);l.appendChild(sp);});
+          body.appendChild(l);
+        }
+        if(alts.length){
+          const al=document.createElement('div'); al.className='alts';
+          al.textContent='Also: '+alts.map(x=>plain(x.name).replace(/\s+Option$/i,'')).join(' · ');
+          body.appendChild(al);
+        }
+      }
+      card.appendChild(body); grid.appendChild(card);
+    }
+    viewEl.innerHTML=''; viewEl.appendChild(grid);
+    $('foot').textContent = shown ? 'Menus can change due to product availability. Source: MealViewer.'
+                                  : 'Nothing posted for this week yet.';
+    queueFit();
+  }
+  function replay(cls){
+    if(reduceMotion) return;
+    const g=viewEl.querySelector('.week'); if(!g) return;
+    g.classList.remove('nav-next','nav-prev'); void g.offsetWidth; g.classList.add(cls);
+  }
+
+  $('prev').addEventListener('click',()=>{monday=addDays(monday||schoolWeek(new Date()),-7);render();replay('nav-prev');});
+  $('next').addEventListener('click',()=>{monday=addDays(monday||schoolWeek(new Date()),7);render();replay('nav-next');});
+  $('tdy').addEventListener('click',()=>{monday=schoolWeek(new Date());render();});
+
+  // Fit the card to the embed box so it never scrolls.
+  let pending=false;
+  function fit(){
+    pending=false;
+    const vw=document.documentElement.clientWidth, vh=document.documentElement.clientHeight;
+    if(!vw||!vh) return;
+    fitEl.style.transform='none'; fitEl.style.width=vw+'px';
+    const h=fitEl.scrollHeight, s=Math.min(1, vh/(h||1));
+    if(s<0.999){ fitEl.style.width=(vw/s)+'px'; fitEl.style.transform=`scale(${s})`; }
+  }
+  function queueFit(){ if(!pending){ pending=true; requestAnimationFrame(fit); } }
+  window.addEventListener('resize',queueFit);
+  if(window.ResizeObserver) new ResizeObserver(queueFit).observe(fitEl);
+
+  function fmtWhen(iso){try{return new Date(iso).toLocaleString('en-US',{month:'short',day:'numeric'});}catch(e){return '';}}
+  function adopt(p){
+    DATA=p; school=Object.keys(DATA.schools||{})[0]||null;
+    const ms=allMeals(); if(!ms.includes(meal)) meal=ms[0]||null;
+    monday=schoolWeek(new Date());
+    // If this week has nothing posted, show the nearest week that does.
+    const has=w=>{for(let i=0;i<5;i++) if(itemsFor(key(addDays(w,i))).length) return true; return false;};
+    if(!has(monday)){
+      const ks=Object.keys(days()).filter(k=>itemsFor(k).length).sort();
+      const nk=ks.find(k=>k>=TODAY)||ks[ks.length-1];
+      if(nk) monday=mondayOf(fromKey(nk));
+    }
+    render();
+  }
+  async function load(){
+    try{
+      const r=await fetch(MENU_URL,{cache:'no-store'});
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      const j=await r.json();
+      if(!j||!j.schools||!Object.keys(j.schools).length) throw new Error('no data');
+      $('sub').textContent='Lincolnwood SD74 · updated '+fmtWhen(j.generated_at);
+      adopt(j);
+    }catch(e){
+      console.warn('live menu unavailable:',e);
+      $('sub').textContent='Lincolnwood SD74 · saved menu';
+      adopt(FALLBACK);
+    }
+  }
+  render(); load();
+})();
+</script>
+</body>
+</html>
