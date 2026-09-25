@@ -75,7 +75,7 @@
     display:flex;gap:16px;align-items:center}
   .plate{width:58px;height:58px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;
     justify-content:center;font-size:28px;background:var(--panel-2);border:1px solid var(--line)}
-  .hero .txt{min-width:0;flex:1;padding-right:84px}
+  .hero .txt{min-width:0;flex:1}
   .hero .when{font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--red)}
   .hero .dish{font-size:clamp(21px,3.1vw,30px);font-weight:800;line-height:1.14;letter-spacing:-.8px;
     margin:4px 0 9px;animation:dishIn .4s var(--ease)}
@@ -83,7 +83,7 @@
   .tag{font-size:12px;background:var(--panel-2);border:1px solid var(--line);color:var(--muted);
     padding:5px 11px;border-radius:6px}
   .hero .opts{font-size:11.5px;color:var(--muted);margin-top:9px}
-  .tog{position:absolute;right:16px;top:13px;border:1px solid var(--line);background:var(--panel-2);
+  .tog{border:1px solid var(--line);background:var(--panel-2);flex-shrink:0;
     color:var(--muted);font-size:12px;font-weight:700;padding:8px 13px;border-radius:7px;cursor:pointer;
     display:flex;align-items:center;gap:6px;box-shadow:0 3px 0 var(--bg);
     transition:background .15s,color .15s,transform .08s linear,box-shadow .08s linear}
@@ -95,40 +95,23 @@
   .hero.closed .txt{display:flex;align-items:baseline;gap:11px;min-width:0}
   .hero.closed .when{flex-shrink:0}
   .hero.closed .dish{font-size:15px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-  .hero.closed .tog{top:50%;transform:translateY(-50%)}
-  .hero.closed .tog:active{transform:translateY(-50%) scale(.97)}
 
-  /* Stat pills + week timeline, so the header carries information
-     instead of empty space */
-  .strip{flex-shrink:0;background:var(--bg);border-bottom:1px solid var(--line)}
-  .strip-in{max-width:1200px;margin:0 auto;padding:9px 16px;display:flex;align-items:center;
-    gap:9px;flex-wrap:wrap}
-  .statpills{display:flex;gap:6px;flex-wrap:wrap;flex:1;min-width:0}
-  .spill{display:inline-flex;align-items:baseline;gap:6px;background:var(--panel);
-    border:1px solid var(--line);border-radius:7px;padding:5px 10px;
-    animation:slideUpIn .34s var(--ease) backwards}
-  .spill b{font-size:14px;font-weight:800;letter-spacing:-.3px;font-variant-numeric:tabular-nums}
-  .spill span{font-size:10.5px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:var(--muted)}
-  .spill.hot b{color:var(--red)}
-  .timeline{flex:0 0 clamp(190px,24vw,300px);background:var(--panel);border:1px solid var(--line);
-    border-radius:8px;padding:7px 12px}
-  .tl-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}
-  .tl-top .t{font-size:10px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:var(--muted)}
-  .tl-top .v{font-size:11px;font-weight:700}
-  .tl-days{display:flex;gap:4px}
-  .tl-days i{flex:1;height:6px;border-radius:3px;background:var(--panel-2);border:1px solid var(--line);
-    animation:slideUpIn .3s var(--ease) backwards}
-  .tl-days i.has{background:var(--muted);border-color:var(--muted)}
-  .tl-days i.today{background:var(--red);border-color:var(--red)}
-  .tl-lab{display:flex;gap:4px;margin-top:4px}
-  .tl-lab span{flex:1;text-align:center;font-size:9px;font-weight:700;color:var(--muted);letter-spacing:.4px}
-  .tl-lab span.today{color:var(--red)}
-
-  main{flex:1;min-height:0;overflow-y:auto}
-  .wrap{max-width:1200px;margin:0 auto;padding:16px 16px 40px}
+  main{flex:1;min-height:0;overflow:hidden}
+  .wrap{max-width:1200px;margin:0 auto;padding:12px 14px 14px;height:100%;
+    display:flex;flex-direction:column}
+  #view{flex:1;min-height:0;display:flex;flex-direction:column}
 
   /* ---------- Week view ---------- */
-  .week{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+  .week{--wf:15px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;
+    flex:1;min-height:0;grid-auto-rows:minmax(0,1fr)}
+  .week .day{overflow:hidden}
+  .week .feat{font-size:var(--wf)}
+  .week .sides span,.week .off-note{font-size:calc(var(--wf)*.85)}
+  .week .alts > span{font-size:calc(var(--wf)*.78)}
+  .week .sect{font-size:calc(var(--wf)*.63)}
+  .week .db{padding:calc(var(--wf)*.7);gap:calc(var(--wf)*.55)}
+  .week .alts{padding:calc(var(--wf)*.55) calc(var(--wf)*.65)}
+  .week.noalts .alts{display:none}
   #view.nav-next{animation:inFromRight .34s var(--ease)}
   #view.nav-prev{animation:inFromLeft .34s var(--ease)}
   .day{background:var(--panel);border:1px solid var(--line);border-radius:9px;overflow:hidden;
@@ -177,16 +160,11 @@
 
   /* Month "fit" mode: the whole month on screen, no scrolling, so it can be
      captured in a single screenshot. */
-  main.fit{overflow:hidden}
-  main.fit .wrap{height:100%;display:flex;flex-direction:column;padding-bottom:14px}
-  main.fit #view{flex:1;min-height:0;display:flex;flex-direction:column}
-  main.fit .month{flex:1;min-height:0;grid-auto-rows:minmax(0,1fr)}
-  main.fit .cell{min-height:0;overflow:hidden;padding:calc(var(--mf)*.55) calc(var(--mf)*.62);
+  .month{flex:1;min-height:0;grid-auto-rows:minmax(0,1fr)}
+  .month .cell{min-height:0;overflow:hidden;padding:calc(var(--mf)*.55) calc(var(--mf)*.62);
     gap:calc(var(--mf)*.3)}
-  main.fit .note{display:none}
-  main.fit.nofit{overflow-y:auto}
-  main.fit.nofit .wrap{height:auto}
-  main.fit.nofit .month{grid-auto-rows:auto}
+  .note{display:none}
+
 
   .empty-state{padding:60px 20px;text-align:center;color:var(--muted);font-size:14px;line-height:1.7}
   .empty-state b{display:block;color:var(--ink);font-size:16px;margin-bottom:8px}
@@ -220,11 +198,11 @@
     .seg button{padding:7px 12px}
     .hero-in{padding:12px;gap:12px}
     .plate{width:44px;height:44px;font-size:22px}
-    .hero .txt{padding-right:70px}
-    .tog{right:10px;top:10px;padding:7px 10px}
+
+    .tog{padding:7px 10px}
     .hero.closed .hero-in{padding:9px 12px}
     .hero.closed .dish{font-size:14px}
-    .week{grid-template-columns:1fr}
+    .week{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
     .wrap{padding:12px 11px 30px}
     .month,.mhead{gap:5px}
     .mhead div{font-size:10px}
@@ -269,12 +247,6 @@
   </header>
 
   <section class="hero" id="hero"></section>
-  <section class="strip" id="strip">
-    <div class="strip-in">
-      <div class="statpills" id="statPills"></div>
-      <div class="timeline" id="timeline"></div>
-    </div>
-  </section>
 
   <main id="main"><div class="wrap">
     <div id="view"></div>
@@ -291,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // on every run, with the two lines below filled in.
   const MENU_URL = /*URL_START*/'https://cdn.jsdelivr.net/gh/aetherwebsitetoken-art/lincoln-hall-lunch-menu@main/menu.json'/*URL_END*/;
   const FALLBACK = /*FALLBACK_START*/{
-  "generated_at": "2026-09-25T06:13:41.501407+00:00",
+  "generated_at": "2026-09-25T06:51:25.870045+00:00",
   "schools": {
     "Lincoln Hall": {
       "2026-09-01": {
@@ -1633,7 +1605,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const $=id=>document.getElementById(id);
   const mainEl=$('main'), viewEl=$('view'), hero=$('hero'), lbl=$('lbl'), statusEl=$('status'),
-        statPills=$('statPills'), timeline=$('timeline'), stripEl=$('strip'),
+
         mealsEl=$('meals'), noteEl=$('note');
 
   // ---------- Dates ----------
@@ -1756,7 +1728,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hero.classList.toggle('closed',!heroOpen);
       lab.textContent=heroOpen?'Hide':'Show';
       tog.setAttribute('aria-expanded',String(heroOpen));
-      if(mode==='month') requestAnimationFrame(fitMonth);   // more room -> bigger text
+      requestAnimationFrame(()=>{ fitMonth(); fitWeek(); });  // more room -> bigger text
     });
     inn.append(plate,txt,tog); hero.appendChild(inn);
     hero.classList.toggle('closed',!heroOpen);
@@ -1809,6 +1781,7 @@ document.addEventListener('DOMContentLoaded', () => {
     viewEl.innerHTML=''; viewEl.appendChild(grid);
     noteEl.textContent=shown?'Menus can change due to product availability. Source: MealViewer.'
                             :'Nothing posted for this week yet — use the arrows to browse, or switch to Month.';
+    requestAnimationFrame(fitWeek);
   }
 
   // ---------- Month view ----------
@@ -1863,7 +1836,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function fitMonth(){
     const m=viewEl.querySelector('.month');
     if(mode!=='month'||!m||!m.getBoundingClientRect) return;
-    mainEl.classList.add('fit'); mainEl.classList.remove('nofit');
     m.classList.remove('compact','breakwords');
     const cells=[...m.querySelectorAll('.cell')];
     const texts=[...m.querySelectorAll('.f,.s')];
@@ -1883,12 +1855,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if(attempt()) return;
     m.classList.add('breakwords');        // 2nd: allow breaking very long words
     if(attempt()) return;
-    mainEl.classList.add('nofit');        // last: let the month scroll
-    m.classList.remove('compact','breakwords');
-    m.style.setProperty('--mf',(small?11:13)+'px');
+    // Nothing fits even at the smallest size: keep the smallest and clip.
+    m.style.setProperty('--mf',minF+'px');
   }
+  // Same idea as fitMonth, for the week view.
+  function fitWeek(){
+    const w=viewEl.querySelector('.week');
+    if(mode!=='week'||!w||!w.getBoundingClientRect) return;
+    w.classList.remove('noalts');
+    const cards=[...w.querySelectorAll('.day')];
+    const over=()=>cards.some(c=>c.scrollHeight>c.clientHeight+1);
+    const small=window.innerWidth<641;
+    const maxF=small?14:16, minF=small?8.5:9.5;
+    const attempt=()=>{
+      for(let f=maxF; f>=minF; f-=0.5){
+        w.style.setProperty('--wf',f+'px');
+        if(!over()) return true;
+      }
+      return false;
+    };
+    if(attempt()) return;
+    w.classList.add('noalts');        // drop the daily options first
+    if(attempt()) return;
+    w.style.setProperty('--wf',minF+'px');
+  }
+
   let fitTimer=null;
-  window.addEventListener('resize',()=>{ clearTimeout(fitTimer); fitTimer=setTimeout(fitMonth,120); });
+  window.addEventListener('resize',()=>{ clearTimeout(fitTimer);
+    fitTimer=setTimeout(()=>{ fitMonth(); fitWeek(); },120); });
 
   // ---------- Render ----------
   const reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1906,74 +1900,6 @@ document.addEventListener('DOMContentLoaded', () => {
     el.classList.remove('nav-next','nav-prev'); void el.offsetWidth; el.classList.add(cls);
   }
 
-  // ── Stat pills + week timeline ─────────────────────────────────────
-  function renderStrip(){
-    const s=schoolDays();
-    const mon = anchor || schoolWeekMonday(new Date());
-    // The pills describe whatever is on screen: this week, or this month.
-    const monthMode = mode==='month';
-    let scope, scopeLabel, rangeLabel;
-    if(monthMode){
-      const first=new Date(anchor.getFullYear(),anchor.getMonth(),1);
-      const last=new Date(anchor.getFullYear(),anchor.getMonth()+1,0);
-      scope=[]; for(let d=new Date(first); d<=last; d=addDays(d,1)){
-        if(d.getDay()>0&&d.getDay()<6) scope.push(key(d));
-      }
-      scopeLabel='school days'; rangeLabel=fmt(first,{month:'long',year:'numeric'});
-    }else{
-      scope=[...Array(5)].map((_,i)=>key(addDays(mon,i)));
-      scopeLabel='days this week';
-      rangeLabel=`${fmt(mon,{month:'short',day:'numeric'})} – ${fmt(addDays(mon,4),{month:'short',day:'numeric'})}`;
-    }
-    const weekKeys=scope;
-    const posted = weekKeys.filter(k=>itemsFor(k).length).length;
-    const items = weekKeys.reduce((n,k)=>n+itemsFor(k).length,0);
-    const totalDays = Object.keys(s).filter(k=>itemsFor(k).length).length;
-    const upcoming = Object.keys(s).filter(k=>k>=TODAY&&itemsFor(k).length).sort()[0];
-    const away = upcoming ? Math.round((fromKey(upcoming)-fromKey(TODAY))/86400000) : null;
-
-    statPills.innerHTML='';
-    let idx=0;
-    const pill=(n,label,hot)=>{
-      const el=document.createElement('div'); el.className='spill'+(hot?' hot':'');
-      el.style.animationDelay=(idx++*55)+'ms';
-      const b=document.createElement('b');
-      if(typeof n==='number') countUp(b,n); else b.textContent=n;
-      const sp=document.createElement('span'); sp.textContent=label;
-      el.append(b,sp); statPills.appendChild(el);
-    };
-    pill(posted, monthMode ? `of ${weekKeys.length} ${scopeLabel} posted` : (posted===1?'day this week':scopeLabel));
-    pill(items, items===1?'item':'items');
-    pill(totalDays,'days posted');
-    if(away!==null) pill(away===0?'Today':away, away===0?'next lunch':away===1?'day away':'days away', true);
-
-    // Mon–Fri ticks, lit where a menu is posted, red on today
-    timeline.innerHTML='';
-    const top=document.createElement('div'); top.className='tl-top';
-    const t=document.createElement('span'); t.className='t';
-    t.textContent = monthMode ? 'This month' : 'This week';
-    const v=document.createElement('span'); v.className='v'; v.textContent=rangeLabel;
-    top.append(t,v);
-    const bars=document.createElement('div'); bars.className='tl-days';
-    weekKeys.forEach((k,i)=>{
-      const bar=document.createElement('i');
-      bar.style.animationDelay=(i*40)+'ms';
-      if(itemsFor(k).length) bar.classList.add('has');
-      if(k===TODAY) bar.classList.add('today');
-      bars.appendChild(bar);
-    });
-    timeline.append(top,bars);
-    if(!monthMode){          // day letters only make sense for a single week
-      const labs=document.createElement('div'); labs.className='tl-lab';
-      ['M','T','W','T','F'].forEach((d,i)=>{
-        const sp=document.createElement('span'); sp.textContent=d;
-        if(weekKeys[i]===TODAY) sp.className='today';
-        labs.appendChild(sp);
-      });
-      timeline.appendChild(labs);
-    }
-  }
-
   function render(){
     renderMeals();
     $('vWeek').classList.toggle('on',mode==='week');
@@ -1986,8 +1912,8 @@ document.addEventListener('DOMContentLoaded', () => {
       noteEl.textContent='';
       return;
     }
-    renderHero(); renderStrip();
-    if(mode==='week'){ mainEl.classList.remove('fit','nofit'); renderWeek(); }
+    renderHero();
+    if(mode==='week'){ renderWeek(); }
     else renderMonth();
   }
 
