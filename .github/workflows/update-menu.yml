@@ -41,7 +41,7 @@ jobs:
           # embed.html is the paste-ready page for Google Sites. The fetcher
           # builds it from the index.html template on every run; index.html
           # itself is never modified by the bot.
-          git add menu.json embed.html
+          git add menu.json embed.html week-embed.html
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No changes"
@@ -57,3 +57,4 @@ jobs:
           REPO="${GITHUB_REPOSITORY}"
           curl -s "https://purge.jsdelivr.net/gh/${REPO}@main/menu.json" || true
           curl -s "https://purge.jsdelivr.net/gh/${REPO}@main/embed.html" || true
+          curl -s "https://purge.jsdelivr.net/gh/${REPO}@main/week-embed.html" || true
