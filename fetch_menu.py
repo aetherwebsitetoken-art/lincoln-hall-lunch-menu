@@ -75,8 +75,12 @@ RETRY_WAIT = 2
 # embed.html is what goes into Google Sites. Only this script ever writes
 # embed.html, so the copy that gets pasted is always filled in -- a new
 # template being uploaded can never leave Google Sites with a blank page.
-TEMPLATE_FILE = "index.html"
-EMBED_FILE = "embed.html"
+# Each (template, output) pair: the bot fills the live link and a saved
+# copy into the template and writes the paste-ready file.
+PAGES = [
+    ("index.html", "embed.html"),        # full menu: week + month views
+    ("week.html",  "week-embed.html"),   # compact: this week only
+]
 URL_REGION_RE = re.compile(r'(/\*URL_START\*/).*?(/\*URL_END\*/)', re.DOTALL)
 FALLBACK_REGION_RE = re.compile(r'(/\*FALLBACK_START\*/).*?(/\*FALLBACK_END\*/)', re.DOTALL)
 
@@ -407,10 +411,15 @@ def dump_structure(payload, limit=60):
 # --- Keeping index.html in sync -------------------------------------------
 
 def build_embed(menu_payload):
-    """Write embed.html: the template with the live-data link and a saved copy
-    of the menu filled in. The template itself is never modified."""
+    """Write each paste-ready page from its template. Templates are never
+    modified."""
+    for template, out in PAGES:
+        _build_one(template, out, menu_payload)
+
+
+def _build_one(TEMPLATE_FILE, EMBED_FILE, menu_payload):
     if not os.path.exists(TEMPLATE_FILE):
-        print(f"(no {TEMPLATE_FILE} beside the script -- can't build {EMBED_FILE})")
+        print(f"(no {TEMPLATE_FILE} -- skipping {EMBED_FILE})")
         return
     html = open(TEMPLATE_FILE, encoding="utf-8").read()
     notes = []
