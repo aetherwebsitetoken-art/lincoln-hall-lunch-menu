@@ -103,7 +103,7 @@
 
   /* ---------- Week view ---------- */
   .week{--wf:15px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;
-    flex:1;min-height:0;grid-auto-rows:minmax(0,1fr)}
+    grid-auto-rows:auto;align-content:start}
   .week .day{overflow:hidden}
   .week .feat{font-size:var(--wf)}
   .week .sides span,.week .off-note{font-size:calc(var(--wf)*.85)}
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // on every run, with the two lines below filled in.
   const MENU_URL = /*URL_START*/'https://cdn.jsdelivr.net/gh/aetherwebsitetoken-art/lincoln-hall-lunch-menu@main/menu.json'/*URL_END*/;
   const FALLBACK = /*FALLBACK_START*/{
-  "generated_at": "2026-09-25T06:51:25.870045+00:00",
+  "generated_at": "2026-09-25T06:56:08.193775+00:00",
   "schools": {
     "Lincoln Hall": {
       "2026-09-01": {
@@ -1863,8 +1863,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const w=viewEl.querySelector('.week');
     if(mode!=='week'||!w||!w.getBoundingClientRect) return;
     w.classList.remove('noalts');
-    const cards=[...w.querySelectorAll('.day')];
-    const over=()=>cards.some(c=>c.scrollHeight>c.clientHeight+1);
+    const over=()=>viewEl.scrollHeight>viewEl.clientHeight+1;
     const small=window.innerWidth<641;
     const maxF=small?14:16, minF=small?8.5:9.5;
     const attempt=()=>{
