@@ -27,6 +27,13 @@
   .page{display:flex;flex-direction:column;height:100%;opacity:0;animation:fade .4s var(--ease) forwards}
   @keyframes fade{to{opacity:1}}
   @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @keyframes pop{0%{opacity:0;transform:translateY(10px) scale(.97)}
+                 60%{opacity:1;transform:translateY(-2px) scale(1.005)}
+                 100%{opacity:1;transform:none}}
+  @keyframes inFromRight{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+  @keyframes inFromLeft{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}
+  @keyframes slideUpIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes dishIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
   /* ---------- Header ---------- */
   .bar{flex-shrink:0;background:var(--panel);border-bottom:1px solid var(--line)}
@@ -70,7 +77,8 @@
     justify-content:center;font-size:28px;background:var(--panel-2);border:1px solid var(--line)}
   .hero .txt{min-width:0;flex:1;padding-right:84px}
   .hero .when{font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--red)}
-  .hero .dish{font-size:clamp(21px,3.1vw,30px);font-weight:800;line-height:1.14;letter-spacing:-.8px;margin:4px 0 9px}
+  .hero .dish{font-size:clamp(21px,3.1vw,30px);font-weight:800;line-height:1.14;letter-spacing:-.8px;
+    margin:4px 0 9px;animation:dishIn .4s var(--ease)}
   .tags{display:flex;flex-wrap:wrap;gap:7px}
   .tag{font-size:12px;background:var(--panel-2);border:1px solid var(--line);color:var(--muted);
     padding:5px 11px;border-radius:6px}
@@ -97,7 +105,8 @@
     gap:9px;flex-wrap:wrap}
   .statpills{display:flex;gap:6px;flex-wrap:wrap;flex:1;min-width:0}
   .spill{display:inline-flex;align-items:baseline;gap:6px;background:var(--panel);
-    border:1px solid var(--line);border-radius:7px;padding:5px 10px}
+    border:1px solid var(--line);border-radius:7px;padding:5px 10px;
+    animation:slideUpIn .34s var(--ease) backwards}
   .spill b{font-size:14px;font-weight:800;letter-spacing:-.3px;font-variant-numeric:tabular-nums}
   .spill span{font-size:10.5px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:var(--muted)}
   .spill.hot b{color:var(--red)}
@@ -107,7 +116,8 @@
   .tl-top .t{font-size:10px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:var(--muted)}
   .tl-top .v{font-size:11px;font-weight:700}
   .tl-days{display:flex;gap:4px}
-  .tl-days i{flex:1;height:6px;border-radius:3px;background:var(--panel-2);border:1px solid var(--line)}
+  .tl-days i{flex:1;height:6px;border-radius:3px;background:var(--panel-2);border:1px solid var(--line);
+    animation:slideUpIn .3s var(--ease) backwards}
   .tl-days i.has{background:var(--muted);border-color:var(--muted)}
   .tl-days i.today{background:var(--red);border-color:var(--red)}
   .tl-lab{display:flex;gap:4px;margin-top:4px}
@@ -119,8 +129,10 @@
 
   /* ---------- Week view ---------- */
   .week{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+  #view.nav-next{animation:inFromRight .34s var(--ease)}
+  #view.nav-prev{animation:inFromLeft .34s var(--ease)}
   .day{background:var(--panel);border:1px solid var(--line);border-radius:9px;overflow:hidden;
-    display:flex;flex-direction:column;opacity:0;animation:rise .3s var(--ease) forwards;
+    display:flex;flex-direction:column;animation:pop .4s var(--ease) backwards;
     transition:transform .18s var(--ease),background .18s,border-color .18s}
   .day.today{border-color:var(--red);box-shadow:inset 0 0 0 1px var(--red)}
   .day.off{opacity:.6}
@@ -151,7 +163,7 @@
   .month{--mf:13px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
   .cell{background:var(--panel);border:1px solid var(--line);border-radius:8px;min-height:96px;
     padding:10px 11px;display:flex;flex-direction:column;gap:5px;cursor:pointer;
-    opacity:0;animation:rise .28s var(--ease) forwards;
+    animation:pop .34s var(--ease) backwards;
     transition:transform .18s var(--ease),background .18s,border-color .18s}
   .cell.out{background:transparent;border-style:dashed;cursor:default;opacity:.5}
   .cell.empty{background:var(--bg)}
@@ -424,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if(items.length) shown++;
       const card=document.createElement('div');
       card.className='day'+(k===TODAY?' today':'')+(items.length?'':' off');
-      card.style.animationDelay=`${i*45}ms`;
+      card.style.animationDelay = reduceMotion ? '0ms' : `${i*60}ms`;
       const h=document.createElement('h2');
       const a=document.createElement('span');a.className='dow';a.textContent=fmt(d,{weekday:'long'});
       const b=document.createElement('span');b.className='dt';
@@ -482,7 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const items=itemsFor(k);
         const c=document.createElement('div');
         c.className='cell'+(inMonth?'':' out')+(inMonth&&!items.length?' empty':'')+(k===TODAY?' today':'');
-        c.style.animationDelay=`${Math.min(n,24)*14}ms`; n++;
+        c.style.animationDelay = reduceMotion ? '0ms' : `${Math.min(n,25)*16}ms`; n++;
         const num=document.createElement('div');num.className='n';num.textContent=day.getDate();
         c.appendChild(num);
         if(inMonth&&items.length){
@@ -542,6 +554,21 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize',()=>{ clearTimeout(fitTimer); fitTimer=setTimeout(fitMonth,120); });
 
   // ---------- Render ----------
+  const reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function countUp(el,to){
+    if(reduceMotion || to<=2){ el.textContent=to; return; }
+    const dur=520, t0=performance.now();
+    (function step(t){
+      const p=Math.min(1,(t-t0)/dur);
+      el.textContent=Math.round(to*(1-Math.pow(1-p,3)));
+      if(p<1) requestAnimationFrame(step); else el.textContent=to;
+    })(t0);
+  }
+  function replay(el,cls){
+    if(reduceMotion) return;
+    el.classList.remove('nav-next','nav-prev'); void el.offsetWidth; el.classList.add(cls);
+  }
+
   // ── Stat pills + week timeline ─────────────────────────────────────
   function renderStrip(){
     const s=schoolDays();
@@ -569,9 +596,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const away = upcoming ? Math.round((fromKey(upcoming)-fromKey(TODAY))/86400000) : null;
 
     statPills.innerHTML='';
+    let idx=0;
     const pill=(n,label,hot)=>{
       const el=document.createElement('div'); el.className='spill'+(hot?' hot':'');
-      const b=document.createElement('b'); b.textContent=n;
+      el.style.animationDelay=(idx++*55)+'ms';
+      const b=document.createElement('b');
+      if(typeof n==='number') countUp(b,n); else b.textContent=n;
       const sp=document.createElement('span'); sp.textContent=label;
       el.append(b,sp); statPills.appendChild(el);
     };
@@ -588,8 +618,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const v=document.createElement('span'); v.className='v'; v.textContent=rangeLabel;
     top.append(t,v);
     const bars=document.createElement('div'); bars.className='tl-days';
-    weekKeys.forEach(k=>{
+    weekKeys.forEach((k,i)=>{
       const bar=document.createElement('i');
+      bar.style.animationDelay=(i*40)+'ms';
       if(itemsFor(k).length) bar.classList.add('has');
       if(k===TODAY) bar.classList.add('today');
       bars.appendChild(bar);
@@ -666,11 +697,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   $('prev').addEventListener('click',()=>{
     anchor = mode==='week' ? addDays(anchor,-7) : new Date(anchor.getFullYear(),anchor.getMonth()-1,1);
-    render();
+    render(); replay(viewEl,'nav-prev');
   });
   $('next').addEventListener('click',()=>{
     anchor = mode==='week' ? addDays(anchor,7) : new Date(anchor.getFullYear(),anchor.getMonth()+1,1);
-    render();
+    render(); replay(viewEl,'nav-next');
   });
   $('tdy').addEventListener('click',()=>{
     const w=schoolWeekMonday(new Date());
