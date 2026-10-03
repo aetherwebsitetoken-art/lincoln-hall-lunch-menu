@@ -1,42 +1,7 @@
 {
-  "generated_at": "2026-10-02T16:10:38.247709+00:00",
+  "generated_at": "2026-10-03T01:00:54.937631+00:00",
   "schools": {
     "Lincoln Hall": {
-      "2026-09-25": {
-        "Lunch": [
-          {
-            "alt": false,
-            "featured": true,
-            "name": "Homemade No Meat Lasagna",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "alt": false,
-            "name": "Carrot/Celery Sticks",
-            "type": "Vegetable"
-          },
-          {
-            "alt": false,
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
-            "alt": false,
-            "name": "Garlic Bread W/ EVOO",
-            "type": "Grain"
-          },
-          {
-            "alt": true,
-            "name": "Bagel Option (K)(H)",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "alt": true,
-            "name": "Chef Salad W/Chicken (H) Option",
-            "type": "Entr\u00e9e"
-          }
-        ]
-      },
       "2026-09-28": {
         "Lunch": [
           {
