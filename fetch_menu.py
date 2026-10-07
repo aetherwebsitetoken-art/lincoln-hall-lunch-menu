@@ -331,9 +331,54 @@ ALT_NAME_RE = re.compile(r'\b(option|alternate|alt\.?|grab\s*(?:&|and)\s*go|dail
 RECURRING_SHARE = 0.6        # on >= 60% of days counts as a daily staple
 MIN_DAYS_FOR_RECURRENCE = 3  # need a few days before recurrence means anything
 
+# Some days the kitchen never files the real dish under an entree category --
+# it arrives with a blank category, or one this script doesn't recognise
+# ("Chicken Nuggets" under nothing at all). Such an item can still headline,
+# but only if it isn't obviously a drink, a piece of fruit or a condiment.
+# Matching is done word by word against the whole name, so "Fresh Orange" is
+# ruled out while "Orange Chicken" is not.
+NOT_A_MAIN_WORDS = {
+    "milk", "juice", "water", "lemonade", "tea", "coffee", "cocoa", "soda",
+    "fruit", "fruits", "apple", "apples", "applesauce", "banana", "bananas",
+    "orange", "oranges", "mandarin", "mandarins", "grape", "grapes", "berry",
+    "berries", "strawberry", "strawberries", "blueberry", "blueberries",
+    "raspberry", "raspberries", "melon", "watermelon", "cantaloupe", "kiwi",
+    "pear", "pears", "peach", "peaches", "pineapple", "plum", "plums",
+    "apricot", "apricots", "raisin", "raisins", "craisins", "prunes",
+    "vegetable", "vegetables", "veggie", "veggies", "carrot", "carrots",
+    "celery", "broccoli", "cauliflower", "cucumber", "cucumbers",
+    "condiment", "condiments", "ketchup", "mustard", "mayo", "mayonnaise",
+    "dressing", "ranch", "syrup", "butter", "jelly", "jam", "napkin",
+    "utensil", "utensils", "silverware", "straw",
+}
+# Words that only ever decorate a name and so don't decide anything.
+NAME_MODIFIER_WORDS = {
+    "fresh", "freshly", "assorted", "asst", "variety", "choice", "chilled",
+    "cold", "sliced", "diced", "cut", "whole", "baby", "mini", "small",
+    "large", "cup", "cups", "bowl", "side", "sides", "serving", "of", "and",
+    "or", "with", "w", "the", "a", "an", "low", "reduced", "fat", "free",
+    "nonfat", "skim", "unsweetened", "canned", "frozen", "seasonal", "local",
+    "oz", "ct", "each", "individual", "packet", "pack", "cold", "hot",
+}
+
 
 def _norm(name):
     return re.sub(r'[^a-z0-9]+', '', name.lower())
+
+
+def _words(name):
+    return re.findall(r'[a-z]+', name.lower())
+
+
+def not_a_main(name):
+    """True when every word in the name is either a modifier or something that
+    is never a lunch in its own right (milk, fruit, a condiment)."""
+    words = _words(name)
+    if not words:
+        return True
+    if not any(w in NOT_A_MAIN_WORDS for w in words):
+        return False
+    return all(w in NOT_A_MAIN_WORDS or w in NAME_MODIFIER_WORDS for w in words)
 
 
 def mark_featured(days):
@@ -348,6 +393,14 @@ def mark_featured(days):
         n_days = len(meal_days)
 
         side_rank = type_rank("Side")
+        unknown_rank = len(TYPE_ORDER)
+
+        def share(item):
+            """How much of the month this item appears on. Below the minimum
+            number of days, recurrence tells us nothing, so treat it as 0."""
+            if n_days < MIN_DAYS_FOR_RECURRENCE:
+                return 0.0
+            return counts.get(_norm(item["name"]), 0) / n_days
 
         def is_alt(item):
             if ALT_NAME_RE.search(item["name"]):
@@ -357,24 +410,40 @@ def mark_featured(days):
             # a normal side, not an alternative lunch.
             if type_rank(item["type"]) >= side_rank:
                 return False
-            if n_days >= MIN_DAYS_FOR_RECURRENCE:
-                return counts.get(_norm(item["name"]), 0) / n_days >= RECURRING_SHARE
-            return False
+            return share(item) >= RECURRING_SHARE
+
+        def uncategorised_dish(item):
+            """A one-off item the kitchen never filed under a category. It's
+            almost certainly that day's real lunch, so it outranks a standing
+            alternate even though it isn't typed as an entree."""
+            if item["alt"]:
+                return False
+            if type_rank(item["type"]) != unknown_rank:
+                return False
+            if not_a_main(item["name"]):
+                return False
+            return share(item) < RECURRING_SHARE
 
         for day in days.values():
             items = day.get(meal)
             if not items:
                 continue
-            side_rank = type_rank("Side")
             for it in items:
                 it["alt"] = is_alt(it)
                 it.pop("featured", None)
 
             entrees = [i for i in items if type_rank(i["type"]) < side_rank]
-            # Priority: a real (non-alternate) entree, then any entree --
-            # even an "option" beats headlining a piece of fruit -- then
-            # anything non-alternate, then whatever's there.
+            # Priority:
+            #   1. a real (non-alternate) entree -- the normal case;
+            #   2. a one-off dish the kitchen left uncategorised, rarest
+            #      first, so "Chicken Nuggets" beats the standing bagel;
+            #   3. any entree, alternates included -- an "option" still
+            #      beats headlining a piece of fruit;
+            #   4. anything non-alternate, then whatever's there.
+            loose = sorted((i for i in items if uncategorised_dish(i)),
+                           key=share)
             pool = [i for i in entrees if not i["alt"]] \
+                or loose \
                 or entrees \
                 or [i for i in items if not i["alt"]] \
                 or items
@@ -497,7 +566,8 @@ def main():
             try:
                 build_embed(json.load(open("menu.json")))
             except Exception as e:
-                print(f"Could not build {EMBED_FILE} from menu.json: {e}", file=sys.stderr)
+                print(f"Could not rebuild the embed pages from menu.json: {e}",
+                      file=sys.stderr)
             sys.exit(1)
 
     payload = {
