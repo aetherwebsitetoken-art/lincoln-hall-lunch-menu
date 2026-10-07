@@ -263,39 +263,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // on every run, with the two lines below filled in.
   const MENU_URL = /*URL_START*/'https://cdn.jsdelivr.net/gh/aetherwebsitetoken-art/sd74-lunch-menu@main/menu.json'/*URL_END*/;
   const FALLBACK = /*FALLBACK_START*/{
-  "generated_at": "2026-10-06T16:37:10.809296+00:00",
+  "generated_at": "2026-10-07T01:09:27.892423+00:00",
   "schools": {
     "Lincoln Hall": {
-      "2026-09-29": {
-        "Lunch": [
-          {
-            "alt": false,
-            "featured": true,
-            "name": "Chicken & Biscuit Sandwich",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "alt": false,
-            "name": "Home Made Mash Potatoes",
-            "type": "Vegetable"
-          },
-          {
-            "alt": false,
-            "name": "Seasonal Fruit",
-            "type": "Fruit"
-          },
-          {
-            "alt": true,
-            "name": "Bagel Option (K)(H)",
-            "type": "Entr\u00e9e"
-          },
-          {
-            "alt": true,
-            "name": "Chef Salad W/Chicken (H) Option",
-            "type": "Entr\u00e9e"
-          }
-        ]
-      },
       "2026-09-30": {
         "Lunch": [
           {
@@ -1028,11 +998,34 @@ document.addEventListener('DOMContentLoaded', () => {
   // treating the first entree-like item as the headline.
   const ENTREE_RE=/entr[ée]e|main|hot\s*food|featured/i;
   const ALT_RE=/\b(option|alternate)\b/i;
+  // A category the kitchen actually filed the item under. Anything else
+  // (blank, or a one-off name) means uncategorised -- usually the day's real
+  // dish, so it may headline ahead of a standing option. Mirrors fetch_menu.py.
+  const KNOWN_TYPE_RE=/entr|main|hot\s*food|featured|side|veg|fruit|grain|milk|condiment|drink|bever/i;
+  const NOT_MAIN=new Set(('milk juice water lemonade tea coffee cocoa soda fruit fruits apple apples '
+    +'applesauce banana bananas orange oranges mandarin mandarins grape grapes berry berries strawberry '
+    +'strawberries blueberry blueberries melon watermelon cantaloupe kiwi pear pears peach peaches '
+    +'pineapple plum plums raisin raisins craisins vegetable vegetables veggie veggies carrot carrots '
+    +'celery broccoli cauliflower cucumber cucumbers condiment condiments ketchup mustard mayo '
+    +'dressing ranch syrup butter jelly jam').split(' '));
+  const MODIFIER=new Set(('fresh freshly assorted asst variety choice chilled cold hot sliced diced cut '
+    +'whole baby mini small large cup cups bowl side sides serving of and or with w the a an low reduced '
+    +'fat free nonfat skim unsweetened canned frozen seasonal local oz ct each individual packet pack').split(' '));
+  // True when every word is a modifier or something that is never a lunch in
+  // its own right -- "Fresh Orange" is, "Orange Chicken" is not.
+  function notAMain(name){
+    const w=(name||'').toLowerCase().match(/[a-z]+/g)||[];
+    if(!w.length) return true;
+    if(!w.some(x=>NOT_MAIN.has(x))) return false;
+    return w.every(x=>NOT_MAIN.has(x)||MODIFIER.has(x));
+  }
   function parts(items){
     if(!items.length) return {feat:null,sides:[],alts:[]};
     let feat=items.find(i=>i.featured);
     const isAlt=i=>i.alt!==undefined?i.alt:ALT_RE.test(i.name);
     if(!feat) feat=items.find(i=>ENTREE_RE.test(i.type||'')&&!isAlt(i))
+                  ||items.find(i=>!isAlt(i)&&!KNOWN_TYPE_RE.test(i.type||'')&&!notAMain(i.name))
+                  ||items.find(i=>ENTREE_RE.test(i.type||''))
                   ||items.find(i=>!isAlt(i))||items[0];
     return {
       feat,
